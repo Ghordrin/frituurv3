@@ -1,10 +1,24 @@
+<!--
+  ~ Copyright (c) 2021. Yannick D - Ghordrin
+  -->
+
+<link rel="stylesheet" href="static/styles/error.css">
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Royal greys - Frituur - ERROR FORBIDDEN</title>
 </head>
 <body>
-<h1 align="center">Je hebt geen toegang!</h1>
+<div id="container">
+    <div id="container-header">
+        <h1 align="center">Je hebt geen toegang!</h1>
+    </div>
+
+    <br>
+    <br>
+    <button id="back-button"><a th:href="@{/}" > Ga terug . . . </a></button>
+</div>
 </body>
 </html>

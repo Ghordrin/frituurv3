@@ -1,53 +1,27 @@
+<!--
+  ~ Copyright (c) 2021. Yannick D - Ghordrin
+  -->
+
+<link rel="stylesheet" href="static/styles/error.css">
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-    <style>
-
-        body{
-            align-content: center;
-        }
-        table td{
-            vertical-align:top;
-            border:solid 1px #888;
-            padding:10px;
-        }
-
-    </style>
+    <meta charset="UTF-8">
+    <title>Royal greys - Frituur - Error</title>
 </head>
 <body>
-<h1>Generic error page</h1>
-<table>
-    <tr>
-        <td>Date</td>
-        <td th:text="${timestamp}"/>
-    </tr>
-    <tr>
-        <td>Path</td>
-        <td th:text="${path}"/>
-    </tr>
-    <tr>
-        <td>Error</td>
-        <td th:text="${error}"/>
-    </tr>
-    <tr>
-        <td>Status</td>
-        <td th:text="${status}"/>
-    </tr>
-    <tr>
-        <td>Message</td>
-        <td th:text="${message}"/>
-    </tr>
-    <tr>
-        <td>Exception</td>
-        <td th:text="${exception}"/>
-    </tr>
-    <tr>
-        <td>Trace</td>
-        <td>
-            <pre th:text="${trace}"/>
-        </td>
-    </tr>
-</table>
+<div id="container">
+    <div id="container-header">
+        <h2>Er is iets fout gelopen!</h2>
+    </div>
+    <br>
+    <br>
+
+    <div id="back-button-wrapper">
+        <button th:href="@{/}" id="back-button">Ga terug . . . </button>
+    </div>
+
+</div>
 </body>
 </html>
