@@ -3,52 +3,49 @@
  */
 
 body {
-    background-color: #338343;
+    background-color: #878787;
 
 }
 
 #logo-wrapper{
-
+    top:10%;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: 90%;
 
 
 }
 
 #logo {
-    animation: bounceIn 0.6s;
-    transform: rotate(0deg) scale(1) translateZ(0);
-    transition: all 0.4s cubic-bezier(.8,1.8,.75,.75);
+    /*animation: bounceIn 0.6s;*/
+    /*transform: rotate(0deg) scale(1) translateZ(0);*/
+    /*transition: all 0.4s cubic-bezier(.8,1.8,.75,.75);*/
     cursor: pointer;
 }
 
+
+#logo_greys{
+    animation: breathing 4s forwards infinite normal;
+    max-width: 400px;
+    height: 600px;
+    background-size: contain;
+}
+
 #logo:hover {
-    animation: breathing 5s ease-in-out infinite normal;
+    /*animation: breathing 5s ease-in infinite normal;*/
 }
 
-@keyframes breathing {
-    0% {
-        -webkit-transform: scale(0.9);
-        transform: scale(0.9);
-    }
-
-    25% {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-    }
-
-    60% {
-        -webkit-transform: scale(0.9);
-        transform: scale(0.9);
-    }
-
-    100% {
-        -webkit-transform: scale(0.9);
-        transform: scale(0.9);
-    }
+footer{
+    display: flex;
+    height: 10%;
+    justify-content: center;
+    align-items: center;
+    font-family: Corbel, sans-serif;
+    text-align: center;
+    font-size: 18px;
 }
+
 
 @keyframes breathing {
     0% {
@@ -73,27 +70,5 @@ body {
         -webkit-transform: scale(0.9);
         -ms-transform: scale(0.9);
         transform: scale(0.9);
-    }
-}
-
-@keyframes bounceIn {
-    0% {
-        opacity: 1;
-        transform: scale(.3);
-    }
-
-    50% {
-        opacity: 1;
-        transform: scale(1.05);
-    }
-
-    70% {
-        opacity: 1;
-        transform: scale(.9);
-    }
-
-    100% {
-        opacity: 1;
-        transform: scale(1);
     }
 }

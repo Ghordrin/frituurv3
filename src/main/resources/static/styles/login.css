@@ -1,0 +1,65 @@
+
+body {
+    background: #c6b9b9;
+    padding: 40px;
+    font-family: "Open Sans Condensed", sans-serif;
+}
+
+label{
+    font-size: 22px;
+}
+fieldset{
+    text-align: center;
+    margin: auto;
+    align-content: center;
+}
+
+
+form {
+    height: 90%;
+    width: 500px;
+    margin: 0 auto;
+    padding: 20px 22px;
+}
+
+form input, form button {
+    width: 400px;
+    border: 1px solid rgba(60, 60, 60, .35);
+    border-bottom-color: rgba(255, 255, 255, .5);
+    border-left-color: rgba(80, 80, 80, .45);
+    background-color: rgba(0,0,0,.2);
+    background-repeat: no-repeat;
+    padding: 8px 24px 8px 10px;
+    font: bold .875em/1.25em "Open Sans Condensed", sans-serif;
+    letter-spacing: .075em;
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0,0,0,.1);
+    margin-bottom: 19px;
+}
+
+form input:focus { background-color: rgba(0,0,0,.4); }
+
+
+::-webkit-input-placeholder { color: #ccc; text-transform: uppercase; }
+::-moz-placeholder { color: #ccc; text-transform: uppercase; }
+:-ms-input-placeholder { color: #ccc; text-transform: uppercase; }
+
+form button[type=submit] {
+    width: 250px;
+    margin-bottom: auto;
+    color: #e2e8e8;
+    text-shadow: 0 1px 0 #aebfbf;
+    text-transform: uppercase;
+    background: #25552a;
+    cursor: pointer;
+}
+
+footer{
+    display: flex;
+    height: 10%;
+    justify-content: center;
+    align-items: center;
+    font-family: Corbel, sans-serif;
+    text-align: center;
+    font-size: 18px;
+}

@@ -106,8 +106,7 @@
 
     <tr th:each="product: ${products}">
         <td>
-            <span th:text="${product.getProduct_name()}"></span>
-            <span th:text="${product.getPrice_sold()}"></span>
+        <button th:name="${product.getProduct_name()}" th:value="${product.getPrice_sold()}" th:text="${product.getProduct_name()}"></button>
         </td>
 
         <td> 1 </td>
