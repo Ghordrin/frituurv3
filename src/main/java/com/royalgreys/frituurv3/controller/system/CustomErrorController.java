@@ -7,7 +7,6 @@ package com.royalgreys.frituurv3.controller.system;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.RequestDispatcher;
@@ -24,7 +23,7 @@ public class CustomErrorController implements ErrorController {
            if(statusCode == HttpStatus.NOT_FOUND.value()){
                return "error-404";
            }else if(statusCode == HttpStatus.FORBIDDEN.value()){
-               return "error-403";
+               return "access-denied";
            }
        }
         return "error";

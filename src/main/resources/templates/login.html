@@ -1,26 +1,32 @@
-
-<link rel="stylesheet" href="static/styles/login.css">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Royalgreys - Login </title>
-
+    <link rel="stylesheet" href="static/styles/login.css">
 </head>
 <body>
 <div id="form">
+
+    <div id="errors" th:if="${(param.error != null) and (param.error[0] == 'true')}">
+        Gebruikersnaam of paswoord is incorrect!
+    </div>
+
+
     <form name="f" th:action="@{/login}" method="post">
         <fieldset>
             <h2>Meld je aan om verder te gaan!</h2>
             <label for="username">Gebruikersnaam</label>
-            <input type="text" id="username" name="username"/>
+            <input type="text" id="username" name="username" autofocus="autofocus"/>
             <label for="password">Wachtwoord</label>
             <input type="password" id="password" name="password"/>
             <div class="form-actions">
-                <button type="submit" class="btn">Inloggen</button>
+                <button type="submit" class="btn btn-primary">Inloggen</button>
             </div>
             <p>Geen account? <a th:href="@{/signup}">klik hier om een account aan te maken</a></p>
         </fieldset>
     </form>
 </div>
-<footer> <div th:include="footer :: copy"></div></footer>
+<footer>
+    <div th:include="footer :: copy"></div>
+</footer>
 </body>
 </html>

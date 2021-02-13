@@ -16,11 +16,15 @@ import java.util.stream.Collectors;
 
 public class CustomUserDetail implements UserDetails {
 
-    private Employee employee;
+    private String username;
+    private String password;
+    private int enabled;
     private List<GrantedAuthority> authorityList;
 
     public CustomUserDetail(Employee employee){
-        this.employee = employee;
+        this.username = employee.getUsername();
+        this.password = employee.getPassword();
+        this.enabled = employee.getEnabled();
         this.authorityList = Arrays.stream(employee.getRole().split(","))
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
@@ -33,12 +37,12 @@ public class CustomUserDetail implements UserDetails {
 
     @Override
     public String getPassword() {
-        return employee.getPassword();
+        return password;
     }
 
     @Override
     public String getUsername() {
-        return employee.getUsername();
+        return username;
     }
 
     @Override

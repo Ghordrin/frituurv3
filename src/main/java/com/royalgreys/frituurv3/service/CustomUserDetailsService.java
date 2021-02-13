@@ -12,16 +12,17 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+import java.util.Optional;
+
 public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        Employee employee = employeeRepository.findByUsername(s);
-        if(employee == null){
-            throw new UsernameNotFoundException("User not found");
-        }
-        return new CustomUserDetail(employee);
+       Optional<Employee> employee = employeeRepository.findByUsername(s);
+
+       employee.orElseThrow(() -> new UsernameNotFoundException("No user found: {" + s + "}"));
+       return employee.map(CustomUserDetail::new).get();
     }
 }
