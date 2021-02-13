@@ -1,4 +1,8 @@
-package com.royalgreys.frituurv3.controller;
+/*
+ * Copyright (c) 2021. Yannick D - Ghordrin
+ */
+
+package com.royalgreys.frituurv3.controller.user;
 
 import com.royalgreys.frituurv3.model.Product;
 import com.royalgreys.frituurv3.repository.ProductRepository;

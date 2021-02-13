@@ -7,17 +7,18 @@
 </head>
 <body>
 <div id="form">
-    <form name="f" th:action="@{/login}" method="post">
+    <form name="f" th:action="@{/signupUser}" th:object="${employee}" method="post">
         <fieldset>
             <h2>Meld je aan om verder te gaan!</h2>
             <label for="username">Gebruikersnaam</label>
-            <input type="text" id="username" name="username"/>
+            <input type="text" th:field="*{username}" id="username" name="username"
+            required minlength="2" maxlength="15"/>
             <label for="password">Wachtwoord</label>
-            <input type="password" id="password" name="password"/>
+            <input type="password" th:field="*{password}" id="password" name="password"
+            required minlength="8" maxlength="18"/>
             <div class="form-actions">
-                <button type="submit" class="btn">Inloggen</button>
+                <button type="submit" class="btn">Account aanmaken</button>
             </div>
-            <p>Geen account? <a th:href="@{/signup}">klik hier om een account aan te maken</a></p>
         </fieldset>
     </form>
 </div>

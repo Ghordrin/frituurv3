@@ -12,6 +12,15 @@ public class Employee {
     private String username;
     private String password;
     private String role;
+    private int enabled;
+
+    public int getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(int enabled) {
+        this.enabled = enabled;
+    }
 
     public int getEmployee_id() {
         return employee_id;

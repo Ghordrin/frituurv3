@@ -1,4 +1,8 @@
-package com.royalgreys.frituurv3.controller;
+/*
+ * Copyright (c) 2021. Yannick D - Ghordrin
+ */
+
+package com.royalgreys.frituurv3.controller.system;
 
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
