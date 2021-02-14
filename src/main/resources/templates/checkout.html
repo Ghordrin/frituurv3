@@ -1,4 +1,3 @@
-
 <link rel="stylesheet" href="static/styles/checkout.css">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -21,16 +20,21 @@
         <td colspan="3"> No products found!</td>
     </tr>
 
-    <tr th:each="product, productStat: ${products}">
-        <td>
-        <button id= "snack_1" th:name="${product.getProduct_name()}" th:value="${product.getPrice_sold()}" th:text="${product.getProduct_name()}"></button>
+    <tr th:each="i : ${#numbers.sequence( 0, #lists.size(products), 3)}">
+        <td th:if="${i < #lists.size(products)}">
+            <button id="snack_1" th:name="${products[i].getProduct_name()}" th:value="${products[i].getPrice_sold()}" th:text="${products[i].getProduct_name()}"></button>
         </td>
-        <td> 1 </td>
-
-        <td> 2 </td>
+        <td th:if="${i+1 < #lists.size(products)}">
+            <button id="snack_2" th:name="${products[i+1].getProduct_name()}" th:value="${products[i+1].getPrice_sold()}" th:text="${products[i+1].getProduct_name()}"></button>
+        </td>
+        <td th:if="${i+2 < #lists.size(products)}">
+            <button id="snack_3" th:name="${products[i+2].getProduct_name()}" th:value="${products[i+2].getPrice_sold()}" th:text="${products[i+2].getProduct_name()}"></button>
+        </td>
     </tr>
     </tbody>
 </table>
 </body>
-<footer> <div th:include="footer :: copy"></div></footer>
+<footer>
+    <div th:include="footer :: copy"></div>
+</footer>
 </html>
