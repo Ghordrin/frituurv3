@@ -5,13 +5,14 @@
 
     <style>
 
-        body{
+        body {
             background-color: lightgray;
         }
+
         table {
             width: 80%;
             border-collapse: collapse;
-            margin:50px auto;
+            margin: 50px auto;
         }
 
         /* Zebra striping */
@@ -37,9 +38,8 @@
         This query will take effect for any screen smaller than 760px
         and also iPads specifically.
         */
-        @media
-        only screen and (max-width: 760px),
-        (min-device-width: 768px) and (max-device-width: 1024px)  {
+        @media only screen and (max-width: 760px),
+        (min-device-width: 768px) and (max-device-width: 1024px) {
 
             table {
                 width: 100%;
@@ -57,7 +57,9 @@
                 left: -9999px;
             }
 
-            tr { border: 1px solid #ccc; }
+            tr {
+                border: 1px solid #ccc;
+            }
 
             td {
                 /* Behave  like a "row" */
@@ -91,9 +93,9 @@
 <table>
     <thead>
     <tr>
-        <th valign="top">Product ID: </th>
+        <th valign="top">Product ID:</th>
         <th valign="top">Product naam:</th>
-        <th valign="top">Product prijs: </th>
+        <th valign="top">Product prijs:</th>
     </tr>
     </thead>
     <tbody>
