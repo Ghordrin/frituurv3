@@ -2,10 +2,9 @@
   ~ Copyright (c) 2021. Yannick D - Ghordrin
   -->
 
-<link rel="stylesheet" href="static/styles/error.css">
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
+<link rel="stylesheet" th:href="@{/static/styles/adminpaneeltable.css}">
 <head>
     <meta charset="UTF-8">
     <title>Royal greys - Frituur - ERROR FORBIDDEN</title>
@@ -13,12 +12,12 @@
 <body>
 <div id="container">
     <div id="container-header">
-        <h1 align="center">Je hebt geen toegang!</h1>
+        <h1 align="center">Elaba, da mag nie he. Je hebt hier geen toegang.</h1>
     </div>
 
-    <br>
-    <br>
+    <div id="back-button-wrapper">
     <button id="back-button"><a th:href="@{/}" > Ga terug . . . </a></button>
+    </div>
 </div>
 </body>
 </html>

@@ -1,6 +1,9 @@
 package com.royalgreys.frituurv3.model;
 
+ import javax.validation.constraints.NotNull;
+
 import javax.persistence.*;
+ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="employees")
@@ -9,7 +12,12 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int employee_id;
+
+    @NotNull(message = "Gebruikersnaam mag niet NULL zijn. ")
+    @Size(min=2, max = 16, message = "Gebruikersnaam moet minimum 2 en maximaal 16 karakters hebben!")
     private String username;
+    @NotNull(message = "Wachtwoord mag niet NULL zijn. ")
+    @Size(min = 6, max = 16,  message = "Wachtwoord moet minimaal 6 en maximaal 16 karakters hebben!")
     private String password;
     private String role;
     private int enabled;

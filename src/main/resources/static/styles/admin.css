@@ -1,0 +1,96 @@
+/*
+ * Copyright (c) 2021. Yannick D - Ghordrin
+ */
+
+
+#admin-panel-wrapper{
+    justify-content: space-around;
+    display: flex;
+    width: 100%;
+    height: 50%;
+    margin: auto;
+}
+
+#admin-panel-wrapper a{
+
+}
+
+.nav-bar{
+    width: 100%;
+}
+
+.navigation-wrapper{
+    position: absolute;
+    margin: 0;
+}
+
+#nav-bar-wrapper{
+    display: flex;
+    justify-content: space-around;
+    height: auto;
+    width: 100%;
+}
+
+
+#logo-greys-klein{
+    max-width: 100px;
+    height: 120px;
+    background-size: contain;
+}
+
+.nav-bar ul{
+    list-style: none;
+    background: #adacac;
+    overflow: hidden;
+    height: auto;
+    display: flex;
+    width: 100%;
+    padding: 0;
+
+}
+
+.nav-bar ul li{
+    margin: auto;
+}
+.nav-bar ul li a{
+    text-decoration: none;
+    padding: 20px;
+    color: #164e1f;
+    font-size: 30px;
+    text-transform: uppercase;
+
+}
+
+a{
+
+}
+
+
+body {
+    background-color: lightgray;
+}
+
+
+button{
+    width: 250px ;
+    text-align: center;
+    height: 70px;
+    font-size: 25px;
+
+}
+
+footer{
+    display: flex;
+    height: 10%;
+    justify-content: center;
+    align-items: center;
+    font-family: Corbel, sans-serif;
+    text-align: center;
+    font-size: 18px;
+}
+
+h1{
+    color: #315e0b;
+    font-size: 40px;
+
+}

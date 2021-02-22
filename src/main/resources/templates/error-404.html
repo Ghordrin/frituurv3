@@ -1,6 +1,7 @@
-<link rel="stylesheet" href="static/styles/error.css">
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/static/styles/adminpaneeltable.css}">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,15 +10,15 @@
 <body>
 <div id="container">
     <div id="container-header">
-        <h1>Pagina niet gevonden!</h1>
+        <h1 align="center">Deze pagina is niet beschikbaar.</h1>
+        <p align="center">Heb je de URL zelf ingetypt? Controleer dan of deze juist is. Indien dit niet het geval is, gelieve dan
+        contact op te nemen met een administrator.</p>
     </div>
 
-    <p>
-        De opgegeven pagina is niet gevonden. Als je ze URL zelf hebt ingetypt, controleer dan of deze juist is. Indien dit niet het geval is, gelieve dan contact op te nemen met een administrator!
-        <br>
-        <button th:href="@{/}" id="back-button">Ga terug . . . </button>
-    </p>
-
+    <div id="back-button-wrapper">
+        <button id="back-button"><a th:href="@{/}" > Ga terug . . . </a></button>
+    </div>
+</div>
 </div>
 </body>
 </html>

@@ -11,26 +11,21 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 @Controller
-public class LoginController {
+public class MainController {
     @Autowired
     EmployeeRepository employeeRepository;
 
-    @GetMapping("/login")
-    public String login(){
-        return "login";
-    }
-
-
-    @GetMapping("/access-denied")
-    public String accessDenied(){
-       return "error/access-denied";
-    }
 
     @GetMapping("/")
     public String home(){
         return "home";
+    }
+
+
+    @GetMapping("/login")
+    public String login(){
+        return "login";
     }
 
     @GetMapping("/signup")
@@ -44,11 +39,12 @@ public class LoginController {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPass = passwordEncoder.encode(employee.getPassword());
         employee.setEnabled(1); // enabled = 1, not enabled = 0
-        employee.setRole("USER"); //default
+        employee.setRole("ROLE_USER"); //default
         employee.setPassword(encodedPass);
         employeeRepository.save(employee);
         return "register_succes";
     }
+
 
 
 }

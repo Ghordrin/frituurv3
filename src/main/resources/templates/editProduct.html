@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/static/styles/adminpaneeltable.css}">
+<head>
+    <meta charset="UTF-8">
+    <title>Producten bewerken</title>
+</head>
+<body>
+<form action="#" th:action="@{/admin/updateProduct}" th:object="${product}" method="post">
+    <label>ID</label>
+    <input type="text" th:value="${product.get().getProduct_id()}" disabled="disabled">
+    <label>Product naam</label>
+    <input type="text" th:value="${product.get().getProduct_name()}">
+    <label>Product verkoopprijs</label>
+    <input type="text" th:value="${product.get().getPrice_sold()}">
+    <label>Product aankoopprijs</label>
+    <input type="text" th:value="${product.get().getPrice_bought()}">
+    <label>Aanpassen</label>
+    <button type="submit" th:value="${product.get().getProduct_id()}">SAVE</button>
+
+
+</form>
+
+</body>
+</html>

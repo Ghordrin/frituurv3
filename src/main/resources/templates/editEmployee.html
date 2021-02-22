@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/static/styles/adminpaneeltable.css}">
+<head>
+    <meta charset="UTF-8">
+    <title>Medewerker bewerken</title>
+</head>
+<body>
+<form action="#" th:action="@{/admin/updateEmployee}" th:object="${employee}" method="post">
+    <label>ID</label>
+    <input type="text" th:value="${employee.get().getEmployee_id()}" disabled="disabled">
+    <label>Gebruikersnaam</label>
+    <input type="text" th:value="${employee.get().getUsername()}">
+    <label>Toegang</label>
+    <input type="text" th:value="${employee.get().getRole()}">
+    <label>Aanpassen</label>
+    <button type="submit" th:value="${employee.get().getEmployee_id()}">SAVE</button>
+
+</form>
+
+</body>
+</html>

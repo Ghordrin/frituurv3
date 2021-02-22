@@ -2,9 +2,10 @@
   ~ Copyright (c) 2021. Yannick D - Ghordrin
   -->
 
-<link rel="stylesheet" href="static/styles/error.css">
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/static/styles/adminpaneeltable.css}">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,15 +14,12 @@
 <body>
 <div id="container">
     <div id="container-header">
-        <h2>Er is iets fout gelopen!</h2>
+        <h1 align="center">Er is iets fout gegaan.</h1>
     </div>
-    <br>
-    <br>
 
     <div id="back-button-wrapper">
         <button id="back-button"><a th:href="@{/}" > Ga terug . . . </a></button>
     </div>
-
 </div>
 </body>
 </html>

@@ -30,6 +30,8 @@ form {
     width: 500px;
     margin: 0 auto;
     padding: 20px 22px;
+    text-align: center;
+    align-content: center;
 }
 
 form input, form button {

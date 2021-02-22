@@ -1,9 +1,20 @@
 <link rel="stylesheet" href="static/styles/checkout.css">
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <title>Royal Greys - Frituur</title>
 </head>
+<header>
+    <div class="nav-bar">
+        <ul>
+            <img id="logo-greys-klein" th:src="@{/static/images/LOGO_GREYS_final.svg}" alt="royalgreys_logo_klein"/>
+            <li  sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/admin}">Adminpaneel</a></li>
+            <li><span th:text="WELKOM +', '+ ${#authentication.getName().toUpperCase()}"></span></li>
+            <li><a th:href="@{/logout}">Uitloggen</a> </li>
+        </ul>
+    </div>
+</header>
 <body>
 
 <table>
