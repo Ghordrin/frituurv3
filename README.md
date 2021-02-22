@@ -22,9 +22,7 @@ Backend checkout applicatie.
  - Burger objecten aanmaken + genereren met button
  - Overzicht creeeren voor de laatste orders + mogelijkheid orders schrappen van lijst.
  
- Backend van de admin pagina's:
- - Overzicht van producten voorzien + mogelijkheid aanpassen van de data (behalve ID)   
- - IDEM voor de gebruikers
+
 
  
  ---
@@ -35,15 +33,14 @@ Backend checkout applicatie.
 ---
 
 #BEZIG:
-Front-end verder mooimaken (Bootstrap library)
-Error handling adhv CustomErrorController class
+ Backend van de admin pagina's:
+ - Overzicht van producten voorzien + mogelijkheid aanpassen van de data (behalve ID)   
+ - IDEM voor de gebruikers
 
 
 
 #BUG:
-Als je foutief inlogt en dan correct kom je terug terecht op het home scherm.
-Momenteel als je op een errorpagina terechtkomt dan wordt je verwezen terug naar het homescherm en niet het vorige
-scherm.
+
 
 
 #AF:
