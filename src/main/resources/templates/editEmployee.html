@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <title>Medewerker bewerken</title>
 </head>
+
+<div th:include="header :: header"></div>
 <body>
 <form action="#" th:action="@{/admin/updateEmployee}" th:object="${employee}" method="post">
     <label>ID</label>

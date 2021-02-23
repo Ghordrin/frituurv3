@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Royal Greys - Adminpaneel - Medewerkers</title>
 </head>
+
+<div th:include="header :: header"></div>
 <body>
 <table>
     <thead>
@@ -19,12 +21,16 @@
     <tr th:if="${employees.iterator().next() == null}">
         <td colspan="3"> No products found!</td>
     </tr>
+    <form th:action="@{/admin/products/edit}" method="get"  align="center">
     <tr th:each="employee: ${employees}">
         <td><span th:text="${employee.getEmployee_id()}"></span></td>
         <td><span th:text="${employee.getUsername()}"></span></td>
         <td><span th:text="${employee.getRole()}"></span></td>
-        <td><a th:href="@{/admin/employees/edit/{id}(id=${employee.getEmployee_id()})}">EDIT</a></td>
+        <td><a th:href="@{/admin/employees/edit/{id}(id=${employee.getEmployee_id()})}">EDIT</a>
+        <a th:href="@{/admin/employees/delete/{id}(id=${employee.getEmployee_id()})}" onclick="return confirm('Ben je zeker?')">DELETE</a></td>
     </tr>
+
+    </form>
     </tbody>
 
 </table>

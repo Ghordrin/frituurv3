@@ -11,9 +11,7 @@ import com.royalgreys.frituurv3.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -29,6 +27,7 @@ public class AdminFrituurController {
     @GetMapping("/admin/products")
     public String getFrituur(Model model){
         model.addAttribute("products", productRepository.findAll() );
+        model.addAttribute("product", new Product());
         return "adminProducts";
     }
 
@@ -51,10 +50,35 @@ public class AdminFrituurController {
         return "editProduct";
     }
 
+    @GetMapping(path={"/admin/products/delete/","admin/products/delete/{id}"})
+    public String deleteProductById(@PathVariable("id") int id){
+        productRepository.deleteById(id);
+        return "redirect:/admin/products/";
+    }
+
+    @GetMapping(path={"/admin/employees/delete/","admin/employees/delete/{id}"})
+    public String deleteEmployeeById(@PathVariable("id") int id){
+        employeeRepository.deleteById(id);
+        return "redirect:/admin/employees/";
+    }
+
+    @PostMapping("/admin/products/new/")
+    public String addProduct(Product product){
+        productRepository.save(product);
+        return "redirect:/admin/products/";
+    }
 
     @GetMapping("/admin")
     public String adminPanel(){
         return "admin";
     }
+
+
+    //attributes
+    @ModelAttribute(value = "newProduct")
+    public Product newProduct(){
+        return new Product();
+    }
+
 
 }

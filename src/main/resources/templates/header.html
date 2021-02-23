@@ -1,0 +1,21 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="static/styles/admin.css">
+<body>
+
+<div th:fragment="header">
+    <header>
+        <div class="nav-bar">
+            <ul>
+                <a th:href="@{/checkout}"><img id="logo-greys-klein" th:src="@{/static/images/LOGO_GREYS_final.svg}" alt="royalgreys_logo_klein"/></a>
+                <li><a href="#">Adminpaneel</a></li>
+            </ul>
+        </div>
+    </header>
+</div>
+
+</body>
+
+</html>

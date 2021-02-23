@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Producten bewerken</title>
 </head>
+<div th:include="header :: header"></div>
 <body>
 <form action="#" th:action="@{/admin/updateProduct}" th:object="${product}" method="post">
     <label>ID</label>
