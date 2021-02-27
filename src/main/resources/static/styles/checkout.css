@@ -15,7 +15,7 @@
 
 
 textarea {
-    width: 200px;
+    width: 400px;
     height: 300px;
     resize: none;
 }
@@ -30,11 +30,12 @@ button{
 }
 
 .order_wrapper{
+    width: 80%;
     padding: 20px;
     display: flex;
     flex-direction: row;
     margin: auto;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 
