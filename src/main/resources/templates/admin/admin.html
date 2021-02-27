@@ -1,18 +1,11 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
-<link rel="stylesheet" href="static/styles/admin.css">
+<link rel="stylesheet" th:href="@{/static/styles/admin.css}">
 <head>
     <meta charset="UTF-8">
     <title>Royal Greys - Frituur</title>
 </head>
-<header>
-    <div class="nav-bar">
-        <ul>
-            <img id="logo-greys-klein" th:src="@{/static/images/LOGO_GREYS_final.svg}" alt="royalgreys_logo_klein"/>
-            <li><a href="#">Adminpaneel</a></li>
-        </ul>
-    </div>
-</header>
+<div th:include="header :: header"></div>
 <body>
 <div id="admin-panel-wrapper">
     <div class="navigation-wrapper">

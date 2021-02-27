@@ -1,59 +1,11 @@
 
+
+
+@import "interface.css";
+
 body{
     background-color: lightgray;
 }
-
-
-
-.nav-bar{
-    width: 100%;
-}
-
-.navigation-wrapper{
-    position: absolute;
-    margin: 0;
-}
-
-#nav-bar-wrapper{
-    display: flex;
-    justify-content: space-around;
-    height: auto;
-    width: 100%;
-}
-
-
-#logo-greys-klein{
-    max-width: 100px;
-    height: 120px;
-    background-size: contain;
-}
-
-.nav-bar ul{
-    list-style: none;
-    background: #adacac;
-    overflow: hidden;
-    height: auto;
-    display: flex;
-    width: 100%;
-    padding: 0;
-    padding-inline-start: 0;
-
-}
-
-.nav-bar ul li{
-    margin: auto;
-}
-.nav-bar ul li a{
-    text-decoration: none;
-    padding: 20px;
-    color: #164e1f;
-    font-size: 30px;
-    text-transform: uppercase;
-
-}
-
-
-
 
 #container{
     justify-content: center;
@@ -102,4 +54,9 @@ td, th {
     text-align: left;
     font-size: 18px;
     backdrop-filter: blur(10px);
+}
+
+form{
+    display: flex;
+    flex-direction: row;
 }

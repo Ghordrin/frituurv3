@@ -1,4 +1,7 @@
 
+@import "interface.css";
+
+
 body {
     background: #c6b9b9;
     padding: 40px;
@@ -14,15 +17,6 @@ fieldset{
     align-content: center;
 }
 
-footer{
-    display: flex;
-    height: 10%;
-    justify-content: center;
-    align-items: center;
-    font-family: Corbel, sans-serif;
-    text-align: center;
-    font-size: 18px;
-}
 
 
 form {

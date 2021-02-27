@@ -1,6 +1,8 @@
 /*
  * Copyright (c) 2021. Yannick D - Ghordrin
  */
+@import "interface.css";
+
 
 body {
     background-color: #988b8b;
@@ -34,16 +36,6 @@ body {
 
 #logo:hover {
     /*animation: breathing 5s ease-in infinite normal;*/
-}
-
-footer{
-    display: flex;
-    height: 10%;
-    justify-content: center;
-    align-items: center;
-    font-family: Corbel, sans-serif;
-    text-align: center;
-    font-size: 18px;
 }
 
 

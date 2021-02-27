@@ -1,0 +1,74 @@
+
+
+body {
+    background-color: lightgray;
+    height: 95%;
+    overflow: hidden;
+}
+
+
+.nav-bar{
+    width: 80%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: auto;
+}
+
+
+header{
+    margin: auto;
+}
+.navigation-wrapper{
+    position: absolute;
+    margin: 0;
+}
+
+#nav-bar-wrapper{
+    display: flex;
+    justify-content: center;
+    height: auto;
+    width: 100%;
+}
+
+
+#logo-greys-klein{
+    max-width: 60px;
+    height: 80px;
+    background-size: contain;
+}
+
+.nav-bar ul{
+    list-style: none;
+    background: #adacac;
+    overflow: hidden;
+    height: auto;
+    display: flex;
+    width: 100%;
+    padding: 0;
+
+}
+
+.nav-bar ul li{
+    margin: auto;
+}
+.nav-bar ul li a{
+    text-decoration: none;
+    padding: 20px;
+    color: #164e1f;
+    font-size: 30px;
+    text-transform: uppercase;
+
+}
+
+footer{
+    display: flex;
+    height: 5%;
+    justify-content: center;
+    align-items: center;
+    font-family: Corbel, sans-serif;
+    text-align: center;
+    font-size: 13px;
+    position: absolute;
+    bottom: 0 ;
+    width: 100%;
+}

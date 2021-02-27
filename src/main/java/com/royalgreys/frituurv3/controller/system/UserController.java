@@ -19,6 +19,6 @@ public class UserController {
     @GetMapping("/checkout")
     public String getProducts(Model model){
         model.addAttribute("products", productRepository.findAll());
-        return "checkout";
+        return "checkout/checkout";
     }
 }

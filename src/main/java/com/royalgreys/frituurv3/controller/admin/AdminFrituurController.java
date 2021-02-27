@@ -4,7 +4,6 @@
 
 package com.royalgreys.frituurv3.controller.admin;
 
-import com.royalgreys.frituurv3.model.Employee;
 import com.royalgreys.frituurv3.model.Product;
 import com.royalgreys.frituurv3.repository.EmployeeRepository;
 import com.royalgreys.frituurv3.repository.ProductRepository;
@@ -12,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 @Controller
 
@@ -28,26 +25,26 @@ public class AdminFrituurController {
     public String getFrituur(Model model){
         model.addAttribute("products", productRepository.findAll() );
         model.addAttribute("product", new Product());
-        return "adminProducts";
+        return "/admin/adminProducts";
     }
 
     @GetMapping("/admin/employees")
     public String getEmployees(Model model){
         model.addAttribute("employees", employeeRepository.findAll() );
-        return "adminEmployees";
+        return "/admin/adminEmployees";
     }
 
     @GetMapping(path={"/admin/employees/edit/","/admin/employees/edit/{id}"})
     public String updateEmployeeById(@PathVariable("id") int id, Model model){
             model.addAttribute("employee", employeeRepository.findById(id));
-            return "editEmployee";
+            return "/admin/adminEditEmployee";
     }
 
 
     @GetMapping(path={"/admin/products/edit/","/admin/products/edit/{id}"})
     public String updateProductById(@PathVariable("id") int id, Model model) {
         model.addAttribute("product", productRepository.findById(id));
-        return "editProduct";
+        return "/admin/adminEditProduct";
     }
 
     @GetMapping(path={"/admin/products/delete/","admin/products/delete/{id}"})
@@ -70,7 +67,7 @@ public class AdminFrituurController {
 
     @GetMapping("/admin")
     public String adminPanel(){
-        return "admin";
+        return "/admin/admin";
     }
 
 

@@ -19,19 +19,19 @@ public class MainController {
 
     @GetMapping("/")
     public String home(){
-        return "home";
+        return "main/home";
     }
 
 
     @GetMapping("/login")
     public String login(){
-        return "login";
+        return "/login/login";
     }
 
     @GetMapping("/signup")
     public String signup(Model model){
         model.addAttribute("employee", new Employee());
-        return "signup";
+        return "/login/signup";
     }
 
     @PostMapping("/signupUser")
@@ -42,7 +42,7 @@ public class MainController {
         employee.setRole("ROLE_USER"); //default
         employee.setPassword(encodedPass);
         employeeRepository.save(employee);
-        return "register_succes";
+        return "/login/register_succes";
     }
 
 

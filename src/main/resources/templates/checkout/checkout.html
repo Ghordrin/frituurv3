@@ -1,6 +1,8 @@
-<link rel="stylesheet" href="static/styles/checkout.css">
+
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<link rel="stylesheet" th:href="@{/static/styles/checkout.css}">
+<script th:src="@{/static/js/buttonhandler.js}"></script>
 <head>
     <meta charset="UTF-8">
     <title>Royal Greys - Frituur</title>
@@ -31,19 +33,19 @@
         <td colspan="3"> No products found!</td>
     </tr>
 
-    <tr th:each="i : ${#numbers.sequence( 0, #lists.size(products), 3)}">
+    <tr th:each="i : ${#numbers.sequence( 0, #lists.size(products), 2)}">
         <td th:if="${i < #lists.size(products)}">
-            <button id="snack_1" th:name="${products[i].getProduct_name()}" th:value="${products[i].getPrice_sold()}" th:text="${products[i].getProduct_name()}"></button>
-        </td>
-        <td th:if="${i+1 < #lists.size(products)}">
-            <button id="snack_2" th:name="${products[i+1].getProduct_name()}" th:value="${products[i+1].getPrice_sold()}" th:text="${products[i+1].getProduct_name()}"></button>
-        </td>
-        <td th:if="${i+2 < #lists.size(products)}">
-            <button id="snack_3" th:name="${products[i+2].getProduct_name()}" th:value="${products[i+2].getPrice_sold()}" th:text="${products[i+2].getProduct_name()}"></button>
-        </td>
+            <button th:id="'snack_' + ${products[i].getProduct_id()}" th:name="${products[i].getProduct_name()}" th:value="${products[i].getPrice_sold()}" th:text="${products[i].getProduct_name()}" onclick="addProductToOrderWindow('order1', this.id)"></button>
+            <button th:if="${i + 1 < #lists.size(products)}" th:id="'snack_' + ${products[i+1].getProduct_id()}" th:name="${products[i+1].getProduct_name()}" th:value="${products[i+1].getPrice_sold()}" th:text="${products[i+1].getProduct_name()}"></button>
     </tr>
     </tbody>
 </table>
+
+<form name="orders" th:align="center" class="order_wrapper">
+    <textarea readonly="readonly" id="order1"></textarea>
+    <textarea readonly="readonly">Textarea 3</textarea>
+    <textarea readonly="readonly">Textarea 3</textarea>
+</form>
 </body>
 <footer>
     <div th:include="footer :: copy"></div>
