@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <link rel="stylesheet" th:href="@{/static/styles/checkout.css}">
-<script th:src="@{/static/js/buttonhandler.js}"></script>
+<script th:src="@{/static/js/handleButton.js}"></script>
 <head>
     <meta charset="UTF-8">
     <title>Royal Greys - Frituur</title>
@@ -29,23 +29,32 @@
     </thead>
     <tbody>
 
-    <tr th:if="${products.iterator().next() == null}">
-        <td colspan="3"> No products found!</td>
-    </tr>
-
+<!--    <tr th:if="${products.iterator().next() == null}">-->
+<!--        <td colspan="3"> No products found!</td>-->
+<!--    </tr>-->
+<form name="buttonForm" method="get" th:action="@{/apto}">
     <tr th:each="i : ${#numbers.sequence( 0, #lists.size(products), 2)}">
         <td th:if="${i < #lists.size(products)}">
-            <button th:id="'snack_' + ${products[i].getProduct_id()}" th:name="${products[i].getProduct_name()}" th:value="${products[i].getPrice_sold()}" th:text="${products[i].getProduct_name()}" onclick="addProductToOrderWindow('order1', this.id)"></button>
-            <button th:if="${i + 1 < #lists.size(products)}" th:id="'snack_' + ${products[i+1].getProduct_id()}" th:name="${products[i+1].getProduct_name()}" th:value="${products[i+1].getPrice_sold()}" th:text="${products[i+1].getProduct_name()}"></button>
+            <button th:id="'snack_' + ${products[i].getProductId()}" th:name="buttonSnack" th:value="${products[i].getProductId()}" th:text="${products[i].getProductName()}"></button>
+            <button th:if="${i + 1 < #lists.size(products)}" th:id="'snack_' + ${products[i+1].getProductId()}" th:name="${products[i+1].getProductName()}" th:value="${products[i+1].getPriceSold()}" th:text="${products[i+1].getProductName()}"></button>
     </tr>
+</form>
     </tbody>
 </table>
 
-<form name="orders" th:align="center" class="order_wrapper">
-    <textarea readonly="readonly" id="order1"></textarea>
-    <textarea readonly="readonly">Textarea 3</textarea>
-    <textarea readonly="readonly">Textarea 3</textarea>
-</form>
+<div>
+
+    <form name="handleOrder" method="get" th:action="@{/newOrder}" align="center">
+    <button type="submit">Nieuwe bestelling</button>
+    </form>
+</div>
+
+<!--<form name="orderz" th:align="center" class="order_wrapper">-->
+<!--    <table>-->
+<!--        <thead>Order</thead>-->
+<!--        <tr th:each="orderSet : ${newOrderSet}">-->
+<!--    </table>-->
+<!--</form>-->
 </body>
 <footer>
     <div th:include="footer :: copy"></div>

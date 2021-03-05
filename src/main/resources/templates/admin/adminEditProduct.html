@@ -9,15 +9,15 @@
 <body>
 <form action="#" th:action="@{/admin/updateProduct}" th:object="${product}" method="post">
     <label>ID</label>
-    <input type="text" th:value="${product.get().getProduct_id()}" disabled="disabled">
+    <input type="text" th:value="${product.get().getProductId()}" disabled="disabled">
     <label>Product naam</label>
-    <input type="text" th:value="${product.get().getProduct_name()}">
+    <input type="text" th:value="${product.get().getProductName()}">
     <label>Product verkoopprijs</label>
-    <input type="text" th:value="${product.get().getPrice_sold()}">
+    <input type="text" th:value="${product.get().getPriceSold()}">
     <label>Product aankoopprijs</label>
-    <input type="text" th:value="${product.get().getPrice_bought()}">
+    <input type="text" th:value="${product.get().getPriceBought()}">
     <label>Aanpassen</label>
-    <button type="submit" th:value="${product.get().getProduct_id()}">SAVE</button>
+    <button type="submit" th:value="${product.get().getProductId()}">SAVE</button>
 
 
 </form>

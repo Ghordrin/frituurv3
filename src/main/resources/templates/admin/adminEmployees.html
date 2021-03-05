@@ -18,9 +18,6 @@
     </thead>
     <tbody>
 
-    <tr th:if="${employees.iterator().next() == null}">
-        <td colspan="3"> No products found!</td>
-    </tr>
     <form th:action="@{/admin/products/edit}" method="get"  align="center">
     <tr th:each="employee: ${employees}">
         <td><span th:text="${employee.getEmployee_id()}"></span></td>

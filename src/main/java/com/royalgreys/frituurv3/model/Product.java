@@ -1,47 +1,60 @@
 package com.royalgreys.frituurv3.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "products")
+@Table(name = "Product")
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int product_id;
-    private String product_name;
-    private double price_bought;
-    private double price_sold;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int productId;
+    private String productName;
+    private double priceBought;
+    private double priceSold;
 
-    public int getProduct_id() {
-        return product_id;
+    @ManyToOne
+    private OrderDetails orderDetails;
+
+    public int getProductId() {
+        return productId;
     }
 
-    public void setProduct_id(int product_id) {
-        this.product_id = product_id;
+    public void setProductId(int product_id) {
+        this.productId = product_id;
     }
 
-    public String getProduct_name() {
-        return product_name;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setProduct_name(String product_name) {
-        this.product_name = product_name;
+    public void setProductName(String product_name) {
+        this.productName = product_name;
     }
 
-    public double getPrice_bought() {
-        return price_bought;
+    public double getPriceBought() {
+        return priceBought;
     }
 
-    public void setPrice_bought(double price_bought) {
-        this.price_bought = price_bought;
+    public void setPriceBought(double price_bought) {
+        this.priceBought = price_bought;
     }
 
-    public double getPrice_sold() {
-        return price_sold;
+    public double getPriceSold() {
+        return priceSold;
     }
 
-    public void setPrice_sold(double price_sold) {
-        this.price_sold = price_sold;
+    public void setPriceSold(double price_sold) {
+        this.priceSold = price_sold;
+    }
+
+    public OrderDetails getOrderDetails() {
+        return orderDetails;
+    }
+
+    public void setOrderDetails(OrderDetails orderDetails) {
+        this.orderDetails = orderDetails;
     }
 }

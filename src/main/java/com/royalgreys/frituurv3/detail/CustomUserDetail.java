@@ -19,12 +19,14 @@ public class CustomUserDetail implements UserDetails {
     private String username;
     private String password;
     private int enabled;
+    private int id;
     private List<GrantedAuthority> authorityList;
 
     public CustomUserDetail(Employee employee){
         this.username = employee.getUsername();
         this.password = employee.getPassword();
         this.enabled = employee.getEnabled();
+        this.id = employee.getEmployee_id();
         this.authorityList = Arrays.stream(employee.getRole().split(","))
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
@@ -33,6 +35,10 @@ public class CustomUserDetail implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorityList;
+    }
+
+    public int getId(){
+        return id;
     }
 
     @Override

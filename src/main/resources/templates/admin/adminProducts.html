@@ -20,16 +20,13 @@
     </thead>
     <tbody>
 
-    <tr th:if="${products.iterator().next() == null}">
-        <td colspan="3"> No products found!</td>
-    </tr>
 <form th:action="@{/admin/products/edit}" method="get" name="getProduct" align="center">
     <tr th:each="product: ${products}">
-        <td><span th:text="${product.getProduct_id()}"> Product ID: </span></td>
-        <td><span th:text="${product.getProduct_name()}"> Product Name: </span></td>
-        <td><span th:text="${product.getPrice_sold()}"> Product Price: </span></td>
-        <td><a th:href="@{/admin/products/edit/{id}(id=${product.getProduct_id()})}">EDIT</a>
-        <a th:href="@{/admin/products/delete/{id}(id=${product.getProduct_id()})}" onclick="return confirm('Ben je zeker?')">DELETE</a>
+        <td><span th:text="${product.getProductId()}"> Product ID: </span></td>
+        <td><span th:text="${product.getProductName()}"> Product Name: </span></td>
+        <td><span th:text="${product.getPriceSold()}"> Product Price: </span></td>
+        <td><a th:href="@{/admin/products/edit/{id}(id=${product.getProductId()})}">EDIT</a>
+        <a th:href="@{/admin/products/delete/{id}(id=${product.getProductId()})}" onclick="return confirm('Ben je zeker?')">DELETE</a>
         </td>
     </tr>
 </form>
@@ -40,11 +37,11 @@
 
 <form th:action="@{/admin/products/new/}" method="post" th:object="${newProduct}" name="postProduct" align="center">
     <label>Product naam</label>
-    <input type="text" th:field="*{product_name}">
+    <input type="text" th:field="*{productName}">
     <label>Product verkoopprijs</label>
-    <input type="text" th:field="*{price_sold}">
+    <input type="text" th:field="*{priceSold}">
     <label>Product aankoopprijs</label>
-    <input type="text" th:field="*{price_bought}">
+    <input type="text" th:field="*{priceBought}">
     <button align="center" type="submit">Product toevoegen</button>
 </form>
 
