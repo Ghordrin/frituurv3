@@ -5,8 +5,10 @@
 package com.royalgreys.frituurv3.controller.system;
 
 import com.royalgreys.frituurv3.detail.CustomUserDetail;
+import com.royalgreys.frituurv3.exceptions.UsernameAlreadyExistsException;
 import com.royalgreys.frituurv3.model.Employee;
 import com.royalgreys.frituurv3.repository.EmployeeRepository;
+import com.royalgreys.frituurv3.service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -23,6 +25,8 @@ public class MainController {
     @Autowired
     EmployeeRepository employeeRepository;
 
+    @Autowired
+    CustomUserDetailsService customUserDetailsService;
 
     @GetMapping("/")
     public String home(){
@@ -42,10 +46,8 @@ public class MainController {
     }
 
     @PostMapping("/signupUser")
-    public String signupUser(@RequestParam(name = "role", defaultValue = "false")boolean isAdmin,  Employee employee){
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String encodedPass = passwordEncoder.encode(employee.getPassword());
-        employee.setEnabled(1); // enabled = 1, not enabled = 0
+    public String signupUser(@RequestParam(name = "role", defaultValue = "false")boolean isAdmin,  Employee employee) throws UsernameAlreadyExistsException {
+        customUserDetailsService.registerNewEmployee(employee);
         if(!isAdmin){
             employee.setRole("ROLE_USER"); //default
             System.out.println("Created a normal user");
@@ -53,7 +55,6 @@ public class MainController {
             employee.setRole("ROLE_ADMIN");
             System.out.println("Created an admin user");
         }
-        employee.setPassword(encodedPass);
         employeeRepository.save(employee);
         return "/login/register_succes";
     }
