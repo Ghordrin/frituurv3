@@ -3,9 +3,9 @@ package com.royalgreys.frituurv3.model;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity
-@Table(name = "Product")
-public class Product implements Serializable {
+@Entity(name = "product")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class Product implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,8 +14,6 @@ public class Product implements Serializable {
     private double priceBought;
     private double priceSold;
 
-    @ManyToOne
-    private OrderDetail orderDetail;
 
     public int getProductId() {
         return productId;
@@ -49,11 +47,4 @@ public class Product implements Serializable {
         this.priceSold = price_sold;
     }
 
-    public OrderDetail getOrderDetails() {
-        return orderDetail;
-    }
-
-    public void setOrderDetails(OrderDetail orderDetail) {
-        this.orderDetail = orderDetail;
-    }
 }

@@ -40,20 +40,40 @@
     </thead>
     <tbody>
     <form name="orders" method="post" th:action="@{/apto}">
-        <form name="buttonForm" method="get" th:object="${products}">
+        <form name="buttonForm" method="get" th:object="${snacks}">
+            <form th:object="${burgers}">
 
-            <tr th:each="i : ${#numbers.sequence( 0, #lists.size(products), 2)}">
-                <td th:if="${i < #lists.size(products)}">
-                    <button th:id="'snack1_' + ${products[i].getProductId()}" th:name="buttonSnack"
-                            th:value="${products[i].getProductId()}" th:text="${products[i].getProductName()}"></button>
-                    <button th:id="'snack2_' + ${products[i+1].getProductId()}" th:if="${i + 1 < #lists.size(products)}"
-                            th:name="buttonSnack" th:value="${products[i+1].getProductId()}"
-                            th:text="${products[i+1].getProductName()}"></button>
-                </td>
+                <tr th:each="i : ${#numbers.sequence( 0, #lists.size(snacks), 2)}">
+                    <td th:if="${i < #lists.size(snacks)}">
+                        <button th:id="'snack1_' + ${snacks[i].getProductId()}" th:name="buttonSnack"
+                                th:value="${snacks[i].getProductId()}" th:text="${snacks[i].getProductName()}"></button>
+                        <button th:id="'snack2_' + ${snacks[i+1].getProductId()}" th:if="${i + 1 < #lists.size(snacks)}"
+                                th:name="buttonSnack" th:value="${snacks[i+1].getProductId()}"
+                                th:text="${snacks[i+1].getProductName()}"></button>
+                        <input type="hidden" value="snack" th:name="snackType"/>
+                    </td>
 
-            </tr>
+                    <td>
+
+                    </td>
+
+
+                    <td th:if="${i < #lists.size(burgers)}">
+                        <button th:id="'burger1_' + ${burgers[i].getProductId()}" th:name="buttonSnack"
+                                th:value="${burgers[i].getProductId()}"
+                                th:text="${burgers[i].getProductName()}"></button>
+                        <button th:id="'burger2_' + ${burgers[i+1].getProductId()}"
+                                th:if="${i + 1 < #lists.size(burgers)}"
+                                th:name="buttonSnack" th:value="${burgers[i+1].getProductId()}"
+                                th:text="${burgers[i+1].getProductName()}"></button>
+                        <input type="hidden" value="burger" th:name="snackType"/>
+                    </td>
+                </tr>
+            </form>
         </form>
     </form>
+
+
     </tbody>
 </table>
 

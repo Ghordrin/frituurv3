@@ -2,7 +2,7 @@
 <link rel="stylesheet" th:href="@{/static/styles/adminpaneeltable.css}">
 <head>
     <meta charset="UTF-8">
-    <title>Royal Greys - Frituur</title>
+    <title>Royal Greys - Frituur - Burgers</title>
 </head>
 
 
@@ -12,21 +12,21 @@
 <table>
     <thead>
     <tr>
-        <th valign="top">Product ID:</th>
-        <th valign="top">Product naam:</th>
-        <th valign="top">Product prijs:</th>
+        <th valign="top">Burger ID:</th>
+        <th valign="top">Burger naam:</th>
+        <th valign="top">Burger prijs:</th>
         <th valign="top">Aanpassen: </th>
     </tr>
     </thead>
     <tbody>
 
-<form th:action="@{/admin/products/edit}" method="get" name="getProduct" align="center">
-    <tr th:each="product: ${products}">
+<form th:action="@{/admin/burgers/edit}" method="get" name="getProduct" align="center">
+    <tr th:each="product: ${burgers}">
         <td><span th:text="${product.getProductId()}"> Product ID: </span></td>
         <td><span th:text="${product.getProductName()}"> Product Name: </span></td>
         <td><span th:text="${product.getPriceSold()}"> Product Price: </span></td>
-        <td><a th:href="@{/admin/products/edit/{id}(id=${product.getProductId()})}">EDIT</a>
-        <a th:href="@{/admin/products/delete/{id}(id=${product.getProductId()})}" onclick="return confirm('Ben je zeker?')">DELETE</a>
+        <td><a th:href="@{/admin/burgers/edit/{id}(id=${product.getProductId()})}">EDIT</a>
+        <a th:href="@{/admin/burgers/delete/{id}(id=${product.getProductId()})}" onclick="return confirm('Ben je zeker?')">DELETE</a>
         </td>
     </tr>
 </form>
@@ -35,7 +35,7 @@
 </table>
 
 
-<form th:action="@{/admin/products/new/}" method="post" th:object="${newProduct}" name="postProduct" align="center">
+<form th:action="@{/admin/burgers/new/}" method="post" th:object="${newBurger}" name="postProduct" align="center">
     <label>Product naam</label>
     <input type="text" th:field="*{productName}">
     <label>Product verkoopprijs</label>

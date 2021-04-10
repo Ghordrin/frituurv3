@@ -4,13 +4,8 @@
 
 package com.royalgreys.frituurv3.controller.system;
 
-import com.royalgreys.frituurv3.model.Employee;
-import com.royalgreys.frituurv3.model.Order;
-import com.royalgreys.frituurv3.model.OrderDetail;
-import com.royalgreys.frituurv3.model.Product;
-import com.royalgreys.frituurv3.repository.EmployeeRepository;
-import com.royalgreys.frituurv3.repository.OrderRepository;
-import com.royalgreys.frituurv3.repository.ProductRepository;
+import com.royalgreys.frituurv3.model.*;
+import com.royalgreys.frituurv3.repository.*;
 import com.royalgreys.frituurv3.service.OrderService;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +24,13 @@ import java.util.*;
 public class CheckoutController {
 
     @Autowired
-    ProductRepository productRepository;
+    SnackRepository snackRepository;
+
+    @Autowired
+    SauceRepository sauceRepository;
+
+    @Autowired
+    BurgerRepository burgerRepository;
 
     @Autowired
     EmployeeRepository employeeRepository;
@@ -73,9 +74,14 @@ public class CheckoutController {
         return "redirect:/checkout";
     }
 
-    @ModelAttribute("products")
-    public List<Product> productList(){
-       return productRepository.findAll();
+    @ModelAttribute("snacks")
+    public List<Snack> productList(){
+       return snackRepository.findAll();
+    }
+
+    @ModelAttribute("burgers")
+    public List<Burger> burgerList(){
+        return burgerRepository.findAll();
     }
 
 

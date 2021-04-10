@@ -1,0 +1,51 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/static/styles/adminpaneeltable.css}">
+<head>
+    <meta charset="UTF-8">
+    <title>Royal Greys - Frituur - Snacks</title>
+</head>
+
+
+<div th:include="header :: header"></div>
+<body>
+
+<table>
+    <thead>
+    <tr>
+        <th valign="top">Snack ID:</th>
+        <th valign="top">Snack naam:</th>
+        <th valign="top">Snack prijs:</th>
+        <th valign="top">Aanpassen: </th>
+    </tr>
+    </thead>
+    <tbody>
+
+<form th:action="@{/admin/snacks/edit}" method="get" name="getProduct" align="center">
+    <tr th:each="product: ${snacks}">
+        <td><span th:text="${product.getProductId()}"> Product ID: </span></td>
+        <td><span th:text="${product.getProductName()}"> Product Name: </span></td>
+        <td><span th:text="${product.getPriceSold()}"> Product Price: </span></td>
+        <td><a th:href="@{/admin/snacks/edit/{id}(id=${product.getProductId()})}">EDIT</a>
+        <a th:href="@{/admin/snacks/delete/{id}(id=${product.getProductId()})}" onclick="return confirm('Ben je zeker?')">DELETE</a>
+        </td>
+    </tr>
+</form>
+
+</tbody>
+</table>
+
+
+<form th:action="@{/admin/snacks/new/}" method="post" th:object="${newSnack}" name="postProduct" align="center">
+    <label>Product naam</label>
+    <input type="text" th:field="*{productName}">
+    <label>Product verkoopprijs</label>
+    <input type="text" th:field="*{priceSold}">
+    <label>Product aankoopprijs</label>
+    <input type="text" th:field="*{priceBought}">
+    <button align="center" type="submit">Product toevoegen</button>
+</form>
+
+
+
+</body>
+</html>

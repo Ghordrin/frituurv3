@@ -4,9 +4,7 @@ import com.royalgreys.frituurv3.model.Employee;
 import com.royalgreys.frituurv3.model.Order;
 import com.royalgreys.frituurv3.model.OrderDetail;
 import com.royalgreys.frituurv3.model.Product;
-import com.royalgreys.frituurv3.repository.OrderDetailRepository;
-import com.royalgreys.frituurv3.repository.OrderRepository;
-import com.royalgreys.frituurv3.repository.ProductRepository;
+import com.royalgreys.frituurv3.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +20,11 @@ public class OrderService {
     private OrderRepository orderRepository;
 
     @Autowired
-    private ProductRepository productRepository;
+    private SnackRepository snackRepository;
+    
+    @Autowired
+    private BurgerRepository burgerRepository;
+    
 
     @Autowired
     private OrderDetailRepository orderDetailRepository;
@@ -37,7 +39,20 @@ public class OrderService {
 
     public Product getButtonIdFromServletRequest(HttpServletRequest request) {
         String buttonValue = request.getParameter("buttonSnack");
-        return productRepository.findById(Integer.parseInt(buttonValue)).get();
+        String typeOfSnack = request.getParameter("snackType");
+        Product product;
+        
+        switch (typeOfSnack){
+            case "snack":
+                product = snackRepository.findById(Integer.parseInt(buttonValue)).get();
+                break;
+            case "burger":
+                product = burgerRepository.findById(Integer.parseInt(buttonValue)).get();
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + typeOfSnack);
+        }
+       return product;
     }
 
     public OrderDetail createOrderRow(HttpServletRequest request, HttpSession session) {

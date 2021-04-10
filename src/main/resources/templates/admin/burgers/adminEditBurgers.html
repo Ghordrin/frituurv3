@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/static/styles/adminpaneeltable.css}">
+<head>
+    <meta charset="UTF-8">
+    <title>Producten bewerken</title>
+</head>
+<div th:include="header :: header"></div>
+<body>
+<form action="#" th:action="@{/admin/burgers/update}" th:object="${burger}" method="post">
+    <label>ID</label>
+    <input type="text" th:value="${burger.get().getProductId()}" disabled="disabled">
+    <label>Product naam</label>
+    <input type="text" th:value="${burger.get().getProductName()}">
+    <label>Product verkoopprijs</label>
+    <input type="text" th:value="${burger.get().getPriceSold()}">
+    <label>Product aankoopprijs</label>
+    <input type="text" th:value="${burger.get().getPriceBought()}">
+    <label>Aanpassen</label>
+    <button type="submit" th:value="${burger.get().getProductId()}">SAVE</button>
+
+
+</form>
+
+</body>
+</html>
