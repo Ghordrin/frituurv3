@@ -14,8 +14,21 @@
 
 
 .order_overview{
+    height: 300px;
+}
+
+.order_overview table tbody, table tbody{
+    display: block;
+}
+
+.order_overview thead{
+    position: -webkit-sticky;
+
+}
+
+.order_overview tbody{
     overflow-y: scroll;
-    height: 350px;
+    height: 200px;
 }
 
 textarea {

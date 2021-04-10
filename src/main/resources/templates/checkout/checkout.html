@@ -30,7 +30,7 @@
     </form>
 </div>
 
-<table>
+<table class="checkout_buttons">
     <thead>
     <tr>
         <th valign="top">Snacks</th>
@@ -39,12 +39,8 @@
     </tr>
     </thead>
     <tbody>
-
-    <!--    <tr th:if="${products.iterator().next() == null}">-->
-    <!--        <td colspan="3"> No products found!</td>-->
-    <!--    </tr>-->
     <form name="orders" method="post" th:action="@{/apto}">
-    <form name="buttonForm" method="get" th:object="${products}">
+        <form name="buttonForm" method="get" th:object="${products}">
 
             <tr th:each="i : ${#numbers.sequence( 0, #lists.size(products), 2)}">
                 <td th:if="${i < #lists.size(products)}">
@@ -66,16 +62,16 @@
     <table>
         <thead>
         <tr>
-        <th  th:text="'Order # ' + ${order.getOrderId()}"></th>
-        <th th:text="'Bediening door: ' + ${session.employee.username}"></th>
-        <th th:text="'Totaal: ‎€' + ${orderTotal} "></th>
+            <th th:text="'Order # ' + ${order.getOrderId()} + ' - ' + 'Bediening door: ' + ${session.employee.username} + ' - ' +'Totaal: ‎€' + ${orderTotal} "></th>
         </tr>
         </thead>
+        <tbody>
         <tr th:each="detail : ${orderList}">
-            <td th:text="${detail.getProduct().getProductName()}" />
+            <td th:text="${detail.getProduct().getProductName()}"/>
             <td th:text="${detail.getProduct().getPriceSold()}"/>
             <td th:name="${detail.getQuantity()}"/>
         </tr>
+        </tbody>
     </table>
 </div>
 

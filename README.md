@@ -26,7 +26,7 @@ Backend checkout applicatie.
 
  
  ---
- Voorzien dat de value van elk product gebruikt kan worden via logica; dwz: indien de value 1.0 (huidige prijs) dat deze
+ Voorzien dat de value van elk snack gebruikt kan worden via logica; dwz: indien de value 1.0 (huidige prijs) dat deze
  in een text area kan voorzien worden
 
 ---
