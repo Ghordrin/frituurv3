@@ -32,11 +32,13 @@
 <!--    <tr th:if="${products.iterator().next() == null}">-->
 <!--        <td colspan="3"> No products found!</td>-->
 <!--    </tr>-->
-<form name="buttonForm" method="get" th:action="@{/apto}">
+<form name="buttonForm" method="get" th:object="${products}">
     <tr th:each="i : ${#numbers.sequence( 0, #lists.size(products), 2)}">
         <td th:if="${i < #lists.size(products)}">
+            <form name="orders" method="post" th:action="@{/apto}">
             <button th:id="'snack_' + ${products[i].getProductId()}" th:name="buttonSnack" th:value="${products[i].getProductId()}" th:text="${products[i].getProductName()}"></button>
-            <button th:if="${i + 1 < #lists.size(products)}" th:id="'snack_' + ${products[i+1].getProductId()}" th:name="${products[i+1].getProductName()}" th:value="${products[i+1].getPriceSold()}" th:text="${products[i+1].getProductName()}"></button>
+            <button th:id="'snack_' + ${products[i+1].getProductId()}" th:if="${i + 1 < #lists.size(products)}"  th:name="buttonSnack" th:value="${products[i+1].getProductId()}" th:text="${products[i+1].getProductName()}"></button>
+            </form>
     </tr>
 </form>
     </tbody>
@@ -47,14 +49,13 @@
     <form name="handleOrder" method="get" th:action="@{/newOrder}" align="center">
     <button type="submit">Nieuwe bestelling</button>
     </form>
+
+
+    <form name="saveOrder" method="post" th:action="@{/saveOrder}" align="center">
+        <button type="submit">Bestelling opslaan</button>
+    </form>
 </div>
 
-<!--<form name="orderz" th:align="center" class="order_wrapper">-->
-<!--    <table>-->
-<!--        <thead>Order</thead>-->
-<!--        <tr th:each="orderSet : ${newOrderSet}">-->
-<!--    </table>-->
-<!--</form>-->
 </body>
 <footer>
     <div th:include="footer :: copy"></div>

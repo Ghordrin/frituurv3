@@ -4,11 +4,12 @@ package com.royalgreys.frituurv3.model;
 
 import javax.persistence.*;
  import javax.validation.constraints.Size;
+ import java.io.Serializable;
  import java.util.Set;
 
 @Entity
 @Table(name="employee")
-public class Employee {
+public class Employee implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

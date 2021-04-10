@@ -1,12 +1,11 @@
 package com.royalgreys.frituurv3.model;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "Product")
-public class Product {
+public class Product implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,7 +15,7 @@ public class Product {
     private double priceSold;
 
     @ManyToOne
-    private OrderDetails orderDetails;
+    private OrderDetail orderDetail;
 
     public int getProductId() {
         return productId;
@@ -50,11 +49,11 @@ public class Product {
         this.priceSold = price_sold;
     }
 
-    public OrderDetails getOrderDetails() {
-        return orderDetails;
+    public OrderDetail getOrderDetails() {
+        return orderDetail;
     }
 
-    public void setOrderDetails(OrderDetails orderDetails) {
-        this.orderDetails = orderDetails;
+    public void setOrderDetails(OrderDetail orderDetail) {
+        this.orderDetail = orderDetail;
     }
 }

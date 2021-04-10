@@ -5,13 +5,13 @@
 package com.royalgreys.frituurv3.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 import java.util.StringJoiner;
 
 @Entity(name = "orders")
-public class Order {
+public class Order implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "orderId")
@@ -26,8 +26,8 @@ public class Order {
     @Column(name = "paymentMethod")
     private String paymentMethod;
 
-    @OneToOne
-    private OrderDetails orderDetails;
+    @OneToMany
+    private List<OrderDetail> orderDetail;
 
 
     public Order() {
@@ -46,12 +46,12 @@ public class Order {
         this.employee = employee;
     }
 
-    public OrderDetails getOrderDetails() {
-        return orderDetails;
+    public List<OrderDetail> getOrderDetail() {
+        return orderDetail;
     }
 
-    public void setOrderDetails(OrderDetails orderDetails) {
-        this.orderDetails = orderDetails;
+    public void setOrderDetail(List<OrderDetail> orderDetail) {
+        this.orderDetail = orderDetail;
     }
 
     public int getOrderId() {
@@ -82,7 +82,7 @@ public class Order {
                 .add("order_time=" + order_time)
                 .add("employee=" + employee)
                 .add("paymentMethod='" + paymentMethod + "'")
-                .add("orderDetails=" + orderDetails)
+                .add("orderDetails=" + orderDetail)
                 .toString();
     }
 }

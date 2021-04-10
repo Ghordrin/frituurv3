@@ -5,28 +5,31 @@
 
 package com.royalgreys.frituurv3.model;
 
+ import net.bytebuddy.dynamic.loading.InjectionClassLoader;
+
  import javax.persistence.*;
+ import java.io.Serializable;
+ import java.util.ArrayList;
  import java.util.HashSet;
+ import java.util.List;
  import java.util.Set;
 
 @Entity(name="orderDetails")
-public class OrderDetails {
+public class OrderDetail implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int orderDetailId;
 
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Order order;
 
-
-    @OneToMany
-    private Set<Product> productOrderSet = new HashSet<>();
-
+    @OneToOne
+    private Product product;
     private int quantity;
 
 
-    public OrderDetails() {
+    public OrderDetail() {
     }
 
     public int getOrderDetailId() {
@@ -45,12 +48,12 @@ public class OrderDetails {
         this.order = order;
     }
 
-    public Set<Product> getProductOrderSet() {
-        return productOrderSet;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProductOrderSet(Set<Product> productOrderSet) {
-        this.productOrderSet = productOrderSet;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public int getQuantity() {
