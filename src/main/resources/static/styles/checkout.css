@@ -13,6 +13,10 @@
 
 
 
+.order_overview{
+    overflow-y: scroll;
+    height: 350px;
+}
 
 textarea {
     width: 400px;
@@ -24,8 +28,8 @@ textarea {
 button{
     width: 150px ;
     text-align: center;
-    height: 70px;
-    font-size: 25px;
+    height: 60px;
+    font-size: 20px;
 
 }
 

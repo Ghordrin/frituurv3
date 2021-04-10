@@ -1,8 +1,7 @@
-
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <link rel="stylesheet" th:href="@{/static/styles/checkout.css}">
-<script th:src="@{/static/js/handleButton.js}"></script>
+<script th:src="@{/static/js/print.js}"></script>
 <head>
     <meta charset="UTF-8">
     <title>Royal Greys - Frituur</title>
@@ -11,13 +10,25 @@
     <div class="nav-bar">
         <ul>
             <img id="logo-greys-klein" th:src="@{/static/images/LOGO_GREYS_final.svg}" alt="royalgreys_logo_klein"/>
-            <li  sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/admin}">Adminpaneel</a></li>
+            <li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/admin}">Adminpaneel</a></li>
             <li><span th:text="WELKOM +', '+ ${#authentication.getName().toUpperCase()}"></span></li>
-            <li><a th:href="@{/logout}">Uitloggen</a> </li>
+            <li><a th:href="@{/logout}">Uitloggen</a></li>
         </ul>
     </div>
 </header>
 <body>
+
+
+<div style="display: flex; justify-content: space-around">
+
+    <form name="handleOrder" method="get" th:action="@{/newOrder}" align="center">
+        <button type="submit">Nieuwe bestelling</button>
+    </form>
+
+    <form name="saveOrder" method="post" th:action="@{/saveOrder}" align="center">
+        <button type="submit" onclick="PrintDiv()">Bestelling opslaan</button>
+    </form>
+</div>
 
 <table>
     <thead>
@@ -29,31 +40,43 @@
     </thead>
     <tbody>
 
-<!--    <tr th:if="${products.iterator().next() == null}">-->
-<!--        <td colspan="3"> No products found!</td>-->
-<!--    </tr>-->
-<form name="buttonForm" method="get" th:object="${products}">
-    <tr th:each="i : ${#numbers.sequence( 0, #lists.size(products), 2)}">
-        <td th:if="${i < #lists.size(products)}">
-            <form name="orders" method="post" th:action="@{/apto}">
-            <button th:id="'snack_' + ${products[i].getProductId()}" th:name="buttonSnack" th:value="${products[i].getProductId()}" th:text="${products[i].getProductName()}"></button>
-            <button th:id="'snack_' + ${products[i+1].getProductId()}" th:if="${i + 1 < #lists.size(products)}"  th:name="buttonSnack" th:value="${products[i+1].getProductId()}" th:text="${products[i+1].getProductName()}"></button>
-            </form>
-    </tr>
-</form>
+    <!--    <tr th:if="${products.iterator().next() == null}">-->
+    <!--        <td colspan="3"> No products found!</td>-->
+    <!--    </tr>-->
+    <form name="orders" method="post" th:action="@{/apto}">
+    <form name="buttonForm" method="get" th:object="${products}">
+
+            <tr th:each="i : ${#numbers.sequence( 0, #lists.size(products), 2)}">
+                <td th:if="${i < #lists.size(products)}">
+                    <button th:id="'snack1_' + ${products[i].getProductId()}" th:name="buttonSnack"
+                            th:value="${products[i].getProductId()}" th:text="${products[i].getProductName()}"></button>
+                    <button th:id="'snack2_' + ${products[i+1].getProductId()}" th:if="${i + 1 < #lists.size(products)}"
+                            th:name="buttonSnack" th:value="${products[i+1].getProductId()}"
+                            th:text="${products[i+1].getProductName()}"></button>
+                </td>
+
+            </tr>
+        </form>
+    </form>
     </tbody>
 </table>
 
-<div>
 
-    <form name="handleOrder" method="get" th:action="@{/newOrder}" align="center">
-    <button type="submit">Nieuwe bestelling</button>
-    </form>
-
-
-    <form name="saveOrder" method="post" th:action="@{/saveOrder}" align="center">
-        <button type="submit">Bestelling opslaan</button>
-    </form>
+<div class="order_overview" id="printable">
+    <table>
+        <thead>
+        <tr>
+        <th  th:text="'Order # ' + ${order.getOrderId()}"></th>
+        <th th:text="'Bediening door: ' + ${session.employee.username}"></th>
+        <th th:text="'Totaal: ‎€' + ${orderTotal} "></th>
+        </tr>
+        </thead>
+        <tr th:each="detail : ${orderList}">
+            <td th:text="${detail.getProduct().getProductName()}" />
+            <td th:text="${detail.getProduct().getPriceSold()}"/>
+            <td th:name="${detail.getQuantity()}"/>
+        </tr>
+    </table>
 </div>
 
 </body>

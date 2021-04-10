@@ -27,36 +27,56 @@ public class OrderService {
     @Autowired
     private OrderDetailRepository orderDetailRepository;
 
-    public Order createOrder(){
+    public Order createOrder(Employee employee) {
         Order order = new Order();
+        order.setEmployee(employee);
         List<OrderDetail> orderDetailList = new ArrayList<>();
         order.setOrderDetail(orderDetailList);
         return order;
     }
 
-    public OrderDetail createOrderRow(HttpServletRequest request, HttpSession session){
+    public Product getButtonIdFromServletRequest(HttpServletRequest request) {
+        String buttonValue = request.getParameter("buttonSnack");
+        return productRepository.findById(Integer.parseInt(buttonValue)).get();
+    }
+
+    public OrderDetail createOrderRow(HttpServletRequest request, HttpSession session) {
         OrderDetail orderDetail = new OrderDetail();
         Order order = (Order) session.getAttribute("order");
-        String buttonValue = request.getParameter("buttonSnack");
-        Product product = productRepository.findById(Integer.parseInt(buttonValue)).get();
+        Product product = getButtonIdFromServletRequest(request);
         orderDetail.setProduct(product);
         orderDetail.setQuantity(1);
         orderDetail.setOrder(order);
-        session.setAttribute("orderDetails", order.getOrderDetail().add(orderDetail));
         return orderDetail;
-
     }
 
-    public void setOrderPaymentMethod(Order order, String paymentMethod){
+
+    public void addOrderDetailToOrderDetailList(Order order, OrderDetail orderDetail) {
+        order.getOrderDetail().add(orderDetail);
+    }
+
+    public void setOrderPaymentMethod(Order order, String paymentMethod) {
         order.setPaymentMethod(paymentMethod);
     }
 
-    public void saveOrderDetailRow(OrderDetail orderDetail){
+    public void saveOrderDetailRow(OrderDetail orderDetail) {
         orderDetailRepository.save(orderDetail);
     }
 
-    public void saveOrder(Order order){
+
+    public void saveOrder(Order order) {
+        for(int i = 0; i < order.getOrderDetail().size(); i++){
+            saveOrderDetailRow(order.getOrderDetail().get(1));
+        }
         orderRepository.save(order);
+    }
+
+    public double calculateTotalAmountOfOrder(Order order){
+        double total = 0;
+        for(int i = 0; i < order.getOrderDetail().size(); i++){
+            total += order.getOrderDetail().get(i).getProduct().getPriceSold();
+        }
+        return total;
     }
 
 }

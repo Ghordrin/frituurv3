@@ -12,6 +12,7 @@ import com.royalgreys.frituurv3.repository.EmployeeRepository;
 import com.royalgreys.frituurv3.repository.OrderRepository;
 import com.royalgreys.frituurv3.repository.ProductRepository;
 import com.royalgreys.frituurv3.service.OrderService;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,31 +47,66 @@ public class CheckoutController {
     }
 
     @GetMapping("/newOrder")
-    public String newOrder(@ModelAttribute Order order, @ModelAttribute OrderDetail orderDetail,
-                            HttpSession session){
+    public String newOrder(HttpSession session){
         Employee currentEmployee = (Employee) session.getAttribute("employee");
-        order = orderService.createOrder();
-        order.setEmployee(currentEmployee);
+        Order order = orderService.createOrder(currentEmployee);
         order.setPaymentMethod("CASH");
         session.setAttribute("order", order);
-        return "checkout/checkout";
+        session.setAttribute("orderList", order.getOrderDetail());
+        return "redirect:/checkout";
     }
 
     @PostMapping("/apto")
     public String productToList (HttpServletRequest request, HttpSession session){
-        orderService.createOrderRow(request, session);
+        Order order = (Order) session.getAttribute("order");
+        OrderDetail orderDetail = orderService.createOrderRow(request, session);
+        orderService.addOrderDetailToOrderDetailList(order, orderDetail);
         return "redirect:/checkout";
     }
 
+
+
     @PostMapping("/saveOrder")
     public String saveOrder(HttpSession session){
-        orderService.saveOrder((Order) session.getAttribute("order"));
+        Order order = (Order) session.getAttribute("order");
+        orderService.saveOrder((order));
         return "redirect:/checkout";
     }
 
     @ModelAttribute("products")
     public List<Product> productList(){
        return productRepository.findAll();
+    }
+
+
+    @ModelAttribute("orderList")
+    public List<OrderDetail> getOrderList(HttpSession session){
+        List<OrderDetail> orderDetailList = (List<OrderDetail>) session.getAttribute("orderList");
+        return orderDetailList;
+    }
+
+    @ModelAttribute("order")
+    public Order getOrder(HttpSession session){
+        Order order;
+        if(session.getAttribute("order") != null){
+            order = (Order) session.getAttribute("order");
+        }else{
+            order = new Order();
+        }
+        return order;
+    }
+
+    @ModelAttribute("orderTotal")
+    public Double getOrderTotal(HttpSession session){
+        Order order;
+        double total = 0;
+        if(session.getAttribute("order") != null){
+            order = (Order) session.getAttribute("order");
+            total += orderService.calculateTotalAmountOfOrder(order);
+        }else{
+            total = 0;
+        }
+       return total;
     }
 
 

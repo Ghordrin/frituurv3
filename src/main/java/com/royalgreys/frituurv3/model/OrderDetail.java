@@ -9,10 +9,7 @@ package com.royalgreys.frituurv3.model;
 
  import javax.persistence.*;
  import java.io.Serializable;
- import java.util.ArrayList;
- import java.util.HashSet;
- import java.util.List;
- import java.util.Set;
+ import java.util.*;
 
 @Entity(name="orderDetails")
 public class OrderDetail implements Serializable {
@@ -62,5 +59,15 @@ public class OrderDetail implements Serializable {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", OrderDetail.class.getSimpleName() + "[", "]")
+                .add("orderDetailId=" + orderDetailId)
+                .add("order=" + order)
+                .add("product=" + product)
+                .add("quantity=" + quantity)
+                .toString();
     }
 }

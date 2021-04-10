@@ -26,7 +26,7 @@ public class Order implements Serializable {
     @Column(name = "paymentMethod")
     private String paymentMethod;
 
-    @OneToMany
+    @OneToMany (cascade = CascadeType.ALL)
     private List<OrderDetail> orderDetail;
 
 
