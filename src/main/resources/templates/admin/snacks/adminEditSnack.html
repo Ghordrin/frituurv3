@@ -7,17 +7,17 @@
 </head>
 <div th:include="header :: header"></div>
 <body>
-<form action="#" th:action="@{/admin/updateProduct}" th:object="${product}" method="post">
+<form action="#" method="post" th:action="@{/admin/updateProduct}" th:object="${product}">
     <label>ID</label>
-    <input type="text" th:value="${product.get().getProductId()}" disabled="disabled">
+    <input disabled="disabled" th:value="${product.get().getProductId()}" type="text">
     <label>Product naam</label>
-    <input type="text" th:value="${product.get().getProductName()}">
+    <input th:value="${product.get().getProductName()}" type="text">
     <label>Product verkoopprijs</label>
-    <input type="text" th:value="${product.get().getPriceSold()}">
+    <input th:value="${product.get().getPriceSold()}" type="text">
     <label>Product aankoopprijs</label>
-    <input type="text" th:value="${product.get().getPriceBought()}">
+    <input th:value="${product.get().getPriceBought()}" type="text">
     <label>Aanpassen</label>
-    <button type="submit" th:value="${product.get().getProductId()}">SAVE</button>
+    <button th:value="${product.get().getProductId()}" type="submit">SAVE</button>
 
 
 </form>

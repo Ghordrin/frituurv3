@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/static/styles/adminpaneeltable.css}">
+<head>
+    <meta charset="UTF-8">
+    <title>Producten bewerken</title>
+</head>
+<div th:include="header :: header"></div>
+<body>
+<form action="#" method="post" th:action="@{/admin/sauces/update}" th:object="${sauce}">
+    <label>ID</label>
+    <input disabled="disabled" th:value="${sauce.get().getProductId()}" type="text">
+    <label>Product naam</label>
+    <input th:value="${sauce.get().getProductName()}" type="text">
+    <label>Product verkoopprijs</label>
+    <input th:value="${sauce.get().getPriceSold()}" type="text">
+    <label>Product aankoopprijs</label>
+    <input th:value="${sauce.get().getPriceBought()}" type="text">
+    <label>Aanpassen</label>
+    <button th:value="${sauce.get().getProductId()}" type="submit">SAVE</button>
+
+
+</form>
+
+</body>
+</html>

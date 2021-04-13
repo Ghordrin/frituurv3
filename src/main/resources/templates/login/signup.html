@@ -1,31 +1,39 @@
-
-<link rel="stylesheet" href="static/styles/login.css">
 <html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/static/styles/login.css}">
 <head>
     <title>Royalgreys - Login </title>
 
 </head>
 <body>
 <div id="form">
-    <form name="f" th:action="@{/signupUser}" th:object="${employee}" method="post">
+
+
+    <form method="post" name="f" th:action="@{/admin/employees/newUser/createNewUser}" th:object="${employee}">
+        <div id="errors">
+            <span th:if="${userNameAlreadyExists}">Er bestaat reeds een gebruiker met deze gebruikersnaam!</span>
+        </div>
+
+
         <fieldset>
-            <h2>Vul je gegevens in om een account aan te maken!</h2>
+            <h2>Vul hier de gegevens in om een account aan te maken!</h2>
             <label for="username">Gebruikersnaam</label>
-            <input type="text" th:field="*{username}" id="username" name="username"
-            required minlength="2" maxlength="15"/>
+            <input id="username" maxlength="15" minlength="2" name="username"
+                   required th:field="*{username}" type="text"/>
 
             <label for="password">Wachtwoord</label>
-            <input type="password" th:field="*{password}" id="password" name="password"
-            required minlength="8" maxlength="18"/>
+            <input id="password" maxlength="18" minlength="8" name="password"
+                   required th:field="*{password}" type="password"/>
             <br>
-            <label>is gebruiker admin?</label>
+            <label>is gebruiker administrator?</label>
             <input name="role" type="checkbox">
             <div class="form-actions">
-                <button type="submit" class="btn">Account aanmaken</button>
+                <button class="btn" type="submit">Account aanmaken</button>
             </div>
         </fieldset>
     </form>
 </div>
-<footer> <div th:include="footer :: copy"></div></footer>
+<footer>
+    <div th:include="footer :: copy"></div>
+</footer>
 </body>
 </html>

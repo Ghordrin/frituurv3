@@ -8,8 +8,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 public class Frituurv3Application {
 
-	public static void main(String[] args) {
-		SpringApplication.run(Frituurv3Application.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(Frituurv3Application.class, args);
+    }
 
 }

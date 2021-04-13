@@ -1,5 +1,4 @@
 
-
 body {
     background-color: lightgray;
     height: 95%;
@@ -7,7 +6,7 @@ body {
 }
 
 
-.nav-bar{
+.nav-bar {
     width: 80%;
     display: flex;
     justify-content: space-evenly;
@@ -15,15 +14,16 @@ body {
 }
 
 
-header{
+header {
     margin: auto;
 }
-.navigation-wrapper{
+
+.navigation-wrapper {
     position: absolute;
     margin: 0;
 }
 
-#nav-bar-wrapper{
+#nav-bar-wrapper {
     display: flex;
     justify-content: center;
     height: auto;
@@ -31,13 +31,13 @@ header{
 }
 
 
-#logo-greys-klein{
+#logo-greys-klein {
     max-width: 60px;
     height: 80px;
     background-size: contain;
 }
 
-.nav-bar ul{
+.nav-bar ul {
     list-style: none;
     background: #adacac;
     overflow: hidden;
@@ -48,10 +48,11 @@ header{
 
 }
 
-.nav-bar ul li{
+.nav-bar ul li {
     margin: auto;
 }
-.nav-bar ul li a{
+
+.nav-bar ul li a {
     text-decoration: none;
     padding: 20px;
     color: #164e1f;
@@ -60,7 +61,7 @@ header{
 
 }
 
-footer{
+footer {
     display: flex;
     height: 5%;
     justify-content: center;
@@ -69,6 +70,6 @@ footer{
     text-align: center;
     font-size: 13px;
     position: absolute;
-    bottom: 0 ;
+    bottom: 0;
     width: 100%;
 }

@@ -9,7 +9,7 @@
 <link rel="stylesheet" th:href="@{/static/styles/home.css}">
 
 <head>
-    <link rel="shortcut icon" type="image/x-icon" th:href="@{/static/images/1 Logo RG_FINAL.ico}" />
+    <link rel="shortcut icon" th:href="@{/static/images/1 Logo RG_FINAL.ico}" type="image/x-icon"/>
     <meta charset="UTF-8">
     <title>Royal greys - Frituur - Home</title>
 </head>
@@ -18,10 +18,12 @@
 <div id="logo-wrapper">
     <a th:href="@{/checkout}">
         <div id="logo">
-          <img id="logo_greys" th:src="@{/static/images/LOGO_GREYS_final.svg}" alt="royalgreys_logo"/>
-        </div> 
+            <img alt="royalgreys_logo" id="logo_greys" th:src="@{/static/images/LOGO_GREYS_final.svg}"/>
+        </div>
     </a>
 </div>
-<footer> <div th:include="footer :: copy"></div></footer>
+<footer>
+    <div th:include="footer :: copy"></div>
+</footer>
 </body>
 </html>

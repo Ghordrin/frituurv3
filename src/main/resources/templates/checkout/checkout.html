@@ -1,5 +1,5 @@
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:th="http://www.thymeleaf.org">
 <link rel="stylesheet" th:href="@{/static/styles/checkout.css}">
 <script th:src="@{/static/js/print.js}"></script>
 <head>
@@ -9,7 +9,7 @@
 <header>
     <div class="nav-bar">
         <ul>
-            <img id="logo-greys-klein" th:src="@{/static/images/LOGO_GREYS_final.svg}" alt="royalgreys_logo_klein"/>
+            <img alt="royalgreys_logo_klein" id="logo-greys-klein" th:src="@{/static/images/LOGO_GREYS_final.svg}"/>
             <li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/admin}">Adminpaneel</a></li>
             <li><span th:text="WELKOM +', '+ ${#authentication.getName().toUpperCase()}"></span></li>
             <li><a th:href="@{/logout}">Uitloggen</a></li>
@@ -21,56 +21,65 @@
 
 <div style="display: flex; justify-content: space-around">
 
-    <form name="handleOrder" method="get" th:action="@{/newOrder}" align="center">
+    <form align="center" method="get" name="handleOrder" th:action="@{/newOrder}">
         <button type="submit">Nieuwe bestelling</button>
     </form>
 
-    <form name="saveOrder" method="post" th:action="@{/saveOrder}" align="center">
-        <button type="submit" onclick="PrintDiv()">Bestelling opslaan</button>
+    <form align="center" method="post" name="saveOrder" th:action="@{/saveOrder}">
+        <button type="submit">Bestelling opslaan</button>
     </form>
+
+    <button onclick="PrintDiv()" type="submit">Bestelling afdrukken</button>
 </div>
 
-<table class="checkout_buttons">
+<table align="center" class="checkout_buttons">
     <thead>
     <tr>
-        <th valign="top">Snacks</th>
-        <th valign="top">Sauzen</th>
-        <th valign="top">Burgers</th>
+        <th style="width: auto" valign="top">Producten</th>
     </tr>
+
+
     </thead>
     <tbody>
-    <form name="orders" method="post" th:action="@{/apto}">
-        <form name="buttonForm" method="get" th:object="${snacks}">
-            <form th:object="${burgers}">
+    <form method="post" name="orders" th:action="@{/apto}">
+        <tr th:each="i : ${#numbers.sequence( 0, #lists.size(snacks), 2)}">
+            <td th:if="${i < #lists.size(snacks)}">
+                <button th:id="'snack1_' + ${snacks[i].getProductId()}" th:name="buttonSnack"
+                        th:text="${snacks[i].getProductName()}" th:value="${snacks[i].getProductId()}"></button>
+                <button th:id="'snack2_' + ${snacks[i+1].getProductId()}" th:if="${i + 1 < #lists.size(snacks)}"
+                        th:name="buttonSnack" th:text="${snacks[i+1].getProductName()}"
+                        th:value="${snacks[i+1].getProductId()}"></button>
+                <input th:name="snackType" type="hidden" value="snack"/>
+            </td>
+        </tr>
+    </form>
 
-                <tr th:each="i : ${#numbers.sequence( 0, #lists.size(snacks), 2)}">
-                    <td th:if="${i < #lists.size(snacks)}">
-                        <button th:id="'snack1_' + ${snacks[i].getProductId()}" th:name="buttonSnack"
-                                th:value="${snacks[i].getProductId()}" th:text="${snacks[i].getProductName()}"></button>
-                        <button th:id="'snack2_' + ${snacks[i+1].getProductId()}" th:if="${i + 1 < #lists.size(snacks)}"
-                                th:name="buttonSnack" th:value="${snacks[i+1].getProductId()}"
-                                th:text="${snacks[i+1].getProductName()}"></button>
-                        <input type="hidden" value="snack" th:name="snackType"/>
-                    </td>
+    <form method="post" name="orders" th:action="@{/apto}">
+        <tr th:each="i : ${#numbers.sequence( 0, #lists.size(sauces), 2)}">
+            <td th:if="${i < #lists.size(sauces)}">
+                <button th:id="'sauce1_' + ${sauces[i].getProductId()}" th:name="buttonSnack"
+                        th:text="${sauces[i].getProductName()}" th:value="${sauces[i].getProductId()}"></button>
+                <button th:id="'sauce2_' + ${sauces[i+1].getProductId()}" th:if="${i + 1 < #lists.size(sauces)}"
+                        th:name="buttonSnack" th:text="${sauces[i+1].getProductName()}"
+                        th:value="${sauces[i+1].getProductId()}"></button>
+                <input th:name="snackType" type="hidden" value="sauce"/>
+            </td>
+        </tr>
+    </form>
 
-                    <td>
-
-                    </td>
-
-
-                    <td th:if="${i < #lists.size(burgers)}">
-                        <button th:id="'burger1_' + ${burgers[i].getProductId()}" th:name="buttonSnack"
-                                th:value="${burgers[i].getProductId()}"
-                                th:text="${burgers[i].getProductName()}"></button>
-                        <button th:id="'burger2_' + ${burgers[i+1].getProductId()}"
-                                th:if="${i + 1 < #lists.size(burgers)}"
-                                th:name="buttonSnack" th:value="${burgers[i+1].getProductId()}"
-                                th:text="${burgers[i+1].getProductName()}"></button>
-                        <input type="hidden" value="burger" th:name="snackType"/>
-                    </td>
-                </tr>
-            </form>
-        </form>
+    <form method="post" name="orders" th:action="@{/apto}">
+        <tr th:each="i : ${#numbers.sequence( 0, #lists.size(burgers), 2)}">
+            <td th:if="${i < #lists.size(burgers)}">
+                <button th:id="'burger1_' + ${burgers[i].getProductId()}" th:name="buttonSnack"
+                        th:text="${burgers[i].getProductName()}"
+                        th:value="${burgers[i].getProductId()}"></button>
+                <button th:id="'burger2_' + ${burgers[i+1].getProductId()}"
+                        th:if="${i + 1 < #lists.size(burgers)}"
+                        th:name="buttonSnack" th:text="${burgers[i+1].getProductName()}"
+                        th:value="${burgers[i+1].getProductId()}"></button>
+                <input th:name="snackType" type="hidden" value="burger"/>
+            </td>
+        </tr>
     </form>
 
 

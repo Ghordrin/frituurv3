@@ -1,8 +1,8 @@
 package com.royalgreys.frituurv3.exceptions;
 
-public class UsernameAlreadyExistsException extends Exception{
+public class UsernameAlreadyExistsException extends Exception {
 
-    public UsernameAlreadyExistsException(String message){
+    public UsernameAlreadyExistsException(String message) {
         super(message);
     }
 }

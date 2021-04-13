@@ -1,14 +1,10 @@
 package com.royalgreys.frituurv3.model;
 
- import javax.validation.constraints.NotNull;
-
 import javax.persistence.*;
- import javax.validation.constraints.Size;
- import java.io.Serializable;
- import java.util.Set;
+import java.io.Serializable;
 
 @Entity
-@Table(name="employee")
+@Table(name = "employee")
 public class Employee implements Serializable {
 
     @Id

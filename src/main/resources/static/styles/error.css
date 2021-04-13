@@ -2,11 +2,11 @@
  * Copyright (c) 2021. Yannick D - Ghordrin
  */
 
-body{
+body {
 
 }
 
-#container{
+#container {
     width: 60%;
     margin: auto;
     align-content: center;
@@ -18,29 +18,30 @@ body{
     border-radius: 0 0 25px 25px;
 
     -webkit-box-shadow: 0px 6px 27px 0px rgba(50, 50, 50, 0.75);
-    -moz-box-shadow:    0px 6px 27px 0px rgba(50, 50, 50, 0.75);
-    box-shadow:         0px 6px 27px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow: 0px 6px 27px 0px rgba(50, 50, 50, 0.75);
+    box-shadow: 0px 6px 27px 0px rgba(50, 50, 50, 0.75);
 
 }
 
-h2{
+h2 {
     color: red;
     font-family: "Fira Code Retina";
 }
 
-#container-header{
+#container-header {
     text-align: center;
     align-content: center;
 
 }
 
-#back-button-wrapper{
+#back-button-wrapper {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 10%;
 }
-#back-button{
+
+#back-button {
 
 }

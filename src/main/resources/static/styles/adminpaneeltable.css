@@ -1,13 +1,10 @@
-
-
-
 @import "interface.css";
 
-body{
+body {
     background-color: lightgray;
 }
 
-#container{
+#container {
     justify-content: center;
     display: flex;
     flex-direction: column;
@@ -16,7 +13,7 @@ body{
     margin: auto;
 }
 
-#back-button-wrapper{
+#back-button-wrapper {
     display: flex;
     left: auto;
     right: auto;
@@ -24,18 +21,19 @@ body{
 
 }
 
-#back-button{
+#back-button {
     width: 150px;
 }
 
-label{
+label {
     font-size: 25px;
     color: #315e0b;
 }
+
 table {
     width: 80%;
     border-collapse: collapse;
-    margin:50px auto;
+    margin: 50px auto;
 }
 
 /* Zebra striping */
@@ -56,7 +54,7 @@ td, th {
     backdrop-filter: blur(10px);
 }
 
-form{
+form {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;

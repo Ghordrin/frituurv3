@@ -18,21 +18,21 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class CustomUserDetailsService implements UserDetailsService {
+public class EmployeeService implements UserDetailsService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-       Optional<Employee> employee = employeeRepository.findByUsername(s);
-       employee.orElseThrow(() -> new UsernameNotFoundException("No user found: {" + s + "}"));
-       return employee.map(CustomUserDetail::new).get();
+        Optional<Employee> employee = employeeRepository.findByUsername(s);
+        employee.orElseThrow(() -> new UsernameNotFoundException("No user found: {" + s + "}"));
+        return employee.map(CustomUserDetail::new).get();
     }
 
     public Employee registerNewEmployee(Employee employee) throws UsernameAlreadyExistsException {
-        if(employeeExists(employee.getUsername())){
+        if (employeeExists(employee.getUsername())) {
             throw new UsernameAlreadyExistsException("Er bestaat reeds een gebruiker met deze naam. Gebruik een andere naam aub.");
-        }else{
+        } else {
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
             String encodedPassword = passwordEncoder.encode(employee.getPassword());
             employee.setEnabled(1);
@@ -44,7 +44,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     }
 
 
-    private boolean employeeExists(String username){
+    private boolean employeeExists(String username) {
         return employeeRepository.findByUsername(username).isPresent();
     }
 }

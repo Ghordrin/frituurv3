@@ -1,3 +1,3 @@
-function addValueToList(value){
+function addValueToList(value) {
     $.post('apto', value)
 }

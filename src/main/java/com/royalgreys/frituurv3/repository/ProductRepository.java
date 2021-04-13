@@ -7,7 +7,7 @@ import org.springframework.data.repository.NoRepositoryBean;
 import java.util.List;
 
 @NoRepositoryBean
-public interface ProductRepository<T extends  Product> extends CrudRepository<T, Integer> {
-    public List<T> findAll();
+public interface ProductRepository<T extends Product> extends CrudRepository<T, Integer> {
+    List<T> findAll();
 
 }

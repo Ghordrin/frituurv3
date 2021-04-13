@@ -8,15 +8,15 @@
 
 <div th:include="header :: header"></div>
 <body>
-<form action="#" th:action="@{/admin/updateEmployee}" th:object="${employee}" method="post">
+<form action="#" method="post" th:action="@{/admin/updateEmployee}" th:object="${employee}">
     <label>ID</label>
-    <input type="text" th:value="${employee.get().getEmployee_id()}" disabled="disabled">
+    <input disabled="disabled" th:value="${employee.get().getEmployee_id()}" type="text">
     <label>Gebruikersnaam</label>
-    <input type="text" th:value="${employee.get().getUsername()}">
+    <input th:value="${employee.get().getUsername()}" type="text">
     <label>Toegang</label>
-    <input type="text" th:value="${employee.get().getRole()}">
+    <input th:value="${employee.get().getRole()}" type="text">
     <label>Aanpassen</label>
-    <button type="submit" th:value="${employee.get().getEmployee_id()}">SAVE</button>
+    <button th:value="${employee.get().getEmployee_id()}" type="submit">SAVE</button>
 
 </form>
 

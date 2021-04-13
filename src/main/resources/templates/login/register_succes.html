@@ -1,6 +1,5 @@
-
-<link rel="stylesheet" href="static/styles/login.css">
 <html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{static/styles/login.css}">
 <head>
     <title>Royalgreys - Login </title>
 
@@ -8,10 +7,12 @@
 <body>
 <div id="form">
     <form>
-  <h1>Registratie succesvol!</h1>
-    <a th:href="@{/login}">Klik hier om je aan te melden!</a>
-</form>
+        <h1>Registratie succesvol!</h1>
+        <a th:href="@{/login}">Klik hier om je aan te melden!</a>
+    </form>
 </div>
-<footer> <div th:include="footer :: copy"></div></footer>
+<footer>
+    <div th:include="footer :: copy"></div>
+</footer>
 </body>
 </html>

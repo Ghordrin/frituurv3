@@ -13,24 +13,30 @@
         <th valign="top">ID</th>
         <th valign="top">Usernaam</th>
         <th valign="top">Toegang</th>
-        <th valign="top">Aanpassen: </th>
+        <th valign="top">Aanpassen:</th>
     </tr>
     </thead>
     <tbody>
 
-    <form th:action="@{/admin/products/edit}" method="get"  align="center">
-    <tr th:each="employee: ${employees}">
-        <td><span th:text="${employee.getEmployee_id()}"></span></td>
-        <td><span th:text="${employee.getUsername()}"></span></td>
-        <td><span th:text="${employee.getRole()}"></span></td>
-        <td><a th:href="@{/admin/employees/edit/{id}(id=${employee.getEmployee_id()})}">EDIT</a>
-        <a th:href="@{/admin/employees/delete/{id}(id=${employee.getEmployee_id()})}" onclick="return confirm('Ben je zeker?')">DELETE</a></td>
-    </tr>
+    <form align="center" method="get" th:action="@{/admin/employees/edit}">
+        <tr th:each="employee: ${employees}">
+            <td><span th:text="${employee.getEmployee_id()}"></span></td>
+            <td><span th:text="${employee.getUsername()}"></span></td>
+            <td><span th:text="${employee.getRole()}"></span></td>
+            <td><a th:href="@{/admin/employees/edit/{id}(id=${employee.getEmployee_id()})}">EDIT</a>
+                <a onclick="return confirm('Ben je zeker?')"
+                   th:href="@{/admin/employees/delete/{id}(id=${employee.getEmployee_id()})}">DELETE</a></td>
+        </tr>
 
     </form>
     </tbody>
 
 </table>
+
+<div align="center">
+    <a align="center" th:href="@{/admin/employees/newUser}">Medewerker aanmaken</a>
+</div>
+
 
 </body>
 </html>

@@ -12,23 +12,27 @@
 }
 
 
-
-.order_overview{
+.order_overview {
     height: 300px;
 }
 
-.order_overview table tbody, table tbody{
+
+table tbody {
+    display: flex;
+}
+
+.order_overview table tbody {
     display: block;
 }
 
-.order_overview thead{
+.order_overview thead {
     position: -webkit-sticky;
 
 }
 
-.order_overview tbody{
+.order_overview tbody {
     overflow-y: scroll;
-    height: 200px;
+    height: 400px;
 }
 
 textarea {
@@ -38,15 +42,15 @@ textarea {
 }
 
 
-button{
-    width: 150px ;
+button {
+    width: 150px;
     text-align: center;
     height: 60px;
     font-size: 20px;
 
 }
 
-.order_wrapper{
+.order_wrapper {
     width: 80%;
     padding: 20px;
     display: flex;
@@ -62,10 +66,6 @@ table {
     border-collapse: collapse;
 }
 
-/* Zebra striping */
-tr:nth-of-type(odd) {
-    background: #eee;
-}
 
 th {
     background: #1d5a11;
@@ -74,11 +74,11 @@ th {
 
 td, th {
     padding: 10px;
-    border: 1px solid #ccc;
     text-align: center;
     font-size: 18px;
     backdrop-filter: blur(10px);
     align-content: center;
     width: 400px;
+    color: #000000;
 
 }

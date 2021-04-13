@@ -12,22 +12,22 @@
 <table>
     <thead>
     <tr>
-        <th valign="top">Burger ID:</th>
-        <th valign="top">Burger naam:</th>
-        <th valign="top">Burger prijs:</th>
+        <th valign="top">Sauce ID:</th>
+        <th valign="top">Sauce naam:</th>
+        <th valign="top">Sauce prijs:</th>
         <th valign="top">Aanpassen:</th>
     </tr>
     </thead>
     <tbody>
 
-    <form align="center" method="get" name="getProduct" th:action="@{/admin/burgers/edit}">
-        <tr th:each="product: ${burgers}">
+    <form align="center" method="get" name="getProduct" th:action="@{/admin/sauces/edit}">
+        <tr th:each="product: ${sauces}">
             <td><span th:text="${product.getProductId()}"> Product ID: </span></td>
             <td><span th:text="${product.getProductName()}"> Product Name: </span></td>
             <td><span th:text="${product.getPriceSold()}"> Product Price: </span></td>
-            <td><a th:href="@{/admin/burgers/edit/{id}(id=${product.getProductId()})}">EDIT</a>
+            <td><a th:href="@{/admin/sauces/edit/{id}(id=${product.getProductId()})}">EDIT</a>
                 <a onclick="return confirm('Ben je zeker?')"
-                   th:href="@{/admin/burgers/delete/{id}(id=${product.getProductId()})}">DELETE</a>
+                   th:href="@{/admin/sauces/delete/{id}(id=${product.getProductId()})}">DELETE</a>
             </td>
         </tr>
     </form>
@@ -36,7 +36,7 @@
 </table>
 
 
-<form align="center" method="post" name="postProduct" th:action="@{/admin/burgers/new/}" th:object="${newBurger}">
+<form align="center" method="post" name="postProduct" th:action="@{/admin/sauces/new/}" th:object="${newSauce}">
     <label>Product naam</label>
     <input autofocus="autofocus" th:field="*{productName}" type="text">
     <label>Product verkoopprijs</label>

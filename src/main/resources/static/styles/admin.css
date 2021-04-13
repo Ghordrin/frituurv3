@@ -3,7 +3,8 @@
  */
 
 @import "interface.css";
-#admin-panel-wrapper{
+
+#admin-panel-wrapper {
     justify-content: space-around;
     display: flex;
     width: 100%;
@@ -11,12 +12,12 @@
     margin: auto;
 }
 
-#admin-panel-wrapper a{
+#admin-panel-wrapper a {
 
 }
 
 
-a{
+a {
 
 }
 
@@ -26,15 +27,15 @@ body {
 }
 
 
-button{
-    width: 250px ;
+button {
+    width: 250px;
     text-align: center;
     height: 70px;
     font-size: 25px;
 
 }
 
-h1{
+h1 {
     color: #315e0b;
     font-size: 40px;
 

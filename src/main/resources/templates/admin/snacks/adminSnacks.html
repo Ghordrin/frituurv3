@@ -15,36 +15,36 @@
         <th valign="top">Snack ID:</th>
         <th valign="top">Snack naam:</th>
         <th valign="top">Snack prijs:</th>
-        <th valign="top">Aanpassen: </th>
+        <th valign="top">Aanpassen:</th>
     </tr>
     </thead>
     <tbody>
 
-<form th:action="@{/admin/snacks/edit}" method="get" name="getProduct" align="center">
-    <tr th:each="product: ${snacks}">
-        <td><span th:text="${product.getProductId()}"> Product ID: </span></td>
-        <td><span th:text="${product.getProductName()}"> Product Name: </span></td>
-        <td><span th:text="${product.getPriceSold()}"> Product Price: </span></td>
-        <td><a th:href="@{/admin/snacks/edit/{id}(id=${product.getProductId()})}">EDIT</a>
-        <a th:href="@{/admin/snacks/delete/{id}(id=${product.getProductId()})}" onclick="return confirm('Ben je zeker?')">DELETE</a>
-        </td>
-    </tr>
-</form>
+    <form align="center" method="get" name="getProduct" th:action="@{/admin/snacks/edit}">
+        <tr th:each="product: ${snacks}">
+            <td><span th:text="${product.getProductId()}"> Product ID: </span></td>
+            <td><span th:text="${product.getProductName()}"> Product Name: </span></td>
+            <td><span th:text="${product.getPriceSold()}"> Product Price: </span></td>
+            <td><a th:href="@{/admin/snacks/edit/{id}(id=${product.getProductId()})}">EDIT</a>
+                <a onclick="return confirm('Ben je zeker?')"
+                   th:href="@{/admin/snacks/delete/{id}(id=${product.getProductId()})}">DELETE</a>
+            </td>
+        </tr>
+    </form>
 
-</tbody>
+    </tbody>
 </table>
 
 
-<form th:action="@{/admin/snacks/new/}" method="post" th:object="${newSnack}" name="postProduct" align="center">
+<form align="center" method="post" name="postProduct" th:action="@{/admin/snacks/new/}" th:object="${newSnack}">
     <label>Product naam</label>
-    <input type="text" th:field="*{productName}">
+    <input th:field="*{productName}" type="text">
     <label>Product verkoopprijs</label>
-    <input type="text" th:field="*{priceSold}">
+    <input th:field="*{priceSold}" type="text">
     <label>Product aankoopprijs</label>
-    <input type="text" th:field="*{priceBought}">
+    <input th:field="*{priceBought}" type="text">
     <button align="center" type="submit">Product toevoegen</button>
 </form>
-
 
 
 </body>

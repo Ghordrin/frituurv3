@@ -16,16 +16,16 @@ import javax.servlet.http.HttpServletRequest;
 public class CustomErrorController implements ErrorController {
 
     @RequestMapping("/error")
-    public String error(HttpServletRequest request){
+    public String error(HttpServletRequest request) {
         Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
-       if (status != null){
-           int statusCode = Integer.parseInt(status.toString());
-           if(statusCode == HttpStatus.NOT_FOUND.value()){
-               return "/error/error-404";
-           }else if(statusCode == HttpStatus.FORBIDDEN.value()){
-               return "/error/access-denied";
-           }
-       }
+        if (status != null) {
+            int statusCode = Integer.parseInt(status.toString());
+            if (statusCode == HttpStatus.NOT_FOUND.value()) {
+                return "/error/error-404";
+            } else if (statusCode == HttpStatus.FORBIDDEN.value()) {
+                return "/error/access-denied";
+            }
+        }
         return "/error/error";
     }
 

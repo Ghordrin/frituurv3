@@ -16,13 +16,13 @@ import java.util.stream.Collectors;
 
 public class CustomUserDetail implements UserDetails {
 
-    private String username;
-    private String password;
-    private int enabled;
-    private int id;
-    private List<GrantedAuthority> authorityList;
+    private final String username;
+    private final String password;
+    private final int enabled;
+    private final int id;
+    private final List<GrantedAuthority> authorityList;
 
-    public CustomUserDetail(Employee employee){
+    public CustomUserDetail(Employee employee) {
         this.username = employee.getUsername();
         this.password = employee.getPassword();
         this.enabled = employee.getEnabled();
@@ -37,7 +37,7 @@ public class CustomUserDetail implements UserDetails {
         return authorityList;
     }
 
-    public int getId(){
+    public int getId() {
         return id;
     }
 

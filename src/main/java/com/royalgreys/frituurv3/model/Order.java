@@ -26,17 +26,12 @@ public class Order implements Serializable {
     @Column(name = "paymentMethod")
     private String paymentMethod;
 
-    @OneToMany (cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<OrderDetail> orderDetail;
 
 
     public Order() {
     }
-
-    public void setOrderId(int order_id) {
-        this.orderId = order_id;
-    }
-
 
     public Employee getEmployee() {
         return employee;
@@ -56,6 +51,10 @@ public class Order implements Serializable {
 
     public int getOrderId() {
         return orderId;
+    }
+
+    public void setOrderId(int order_id) {
+        this.orderId = order_id;
     }
 
     public LocalDateTime getOrder_time() {

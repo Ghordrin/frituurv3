@@ -1,7 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Royalgreys - Login </title>
-    <link rel="stylesheet" href="static/styles/login.css">
+    <link rel="stylesheet" th:href="@{/static/styles/login.css}">
 </head>
 <body>
 <div id="form">
@@ -10,17 +10,16 @@
         Gebruikersnaam of paswoord is incorrect!
     </div>
 
-    <form name="f" th:action="@{/login}" method="post">
+    <form method="post" name="f" th:action="@{/login}">
         <fieldset>
             <h2>Meld je aan om verder te gaan!</h2>
             <label for="username">Gebruikersnaam</label>
-            <input type="text" id="username" name="username" autofocus="autofocus"/>
+            <input autofocus="autofocus" id="username" name="username" type="text"/>
             <label for="password">Wachtwoord</label>
-            <input type="password" id="password" name="password"/>
+            <input id="password" name="password" type="password"/>
             <div class="form-actions">
-                <button type="submit" class="btn btn-primary">Inloggen</button>
+                <button class="btn btn-primary" type="submit">Inloggen</button>
             </div>
-            <p>Geen account? <a th:href="@{/signup}">klik hier om een account aan te maken</a></p>
         </fieldset>
     </form>
 </div>

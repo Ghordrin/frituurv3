@@ -13,10 +13,10 @@ import java.io.IOException;
 public class LoginAccesDeniedHandler implements AccessDeniedHandler {
     @Override
     public void handle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AccessDeniedException e) throws IOException, ServletException {
-       Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-       if(auth != null){
-           System.out.println("Access denied error");
-       }
-       httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/access-denied");
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null) {
+            System.out.println("Access denied error");
+        }
+        httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/access-denied");
     }
 }

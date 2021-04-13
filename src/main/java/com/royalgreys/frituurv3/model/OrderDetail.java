@@ -5,13 +5,11 @@
 
 package com.royalgreys.frituurv3.model;
 
- import net.bytebuddy.dynamic.loading.InjectionClassLoader;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.StringJoiner;
 
- import javax.persistence.*;
- import java.io.Serializable;
- import java.util.*;
-
-@Entity(name="orderDetails")
+@Entity(name = "orderDetails")
 public class OrderDetail implements Serializable {
 
     @Id

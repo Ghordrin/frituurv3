@@ -21,10 +21,13 @@ public class OrderService {
 
     @Autowired
     private SnackRepository snackRepository;
-    
+
     @Autowired
     private BurgerRepository burgerRepository;
-    
+
+    @Autowired
+    private SauceRepository sauceRepository;
+
 
     @Autowired
     private OrderDetailRepository orderDetailRepository;
@@ -41,18 +44,21 @@ public class OrderService {
         String buttonValue = request.getParameter("buttonSnack");
         String typeOfSnack = request.getParameter("snackType");
         Product product;
-        
-        switch (typeOfSnack){
+
+        switch (typeOfSnack) {
             case "snack":
                 product = snackRepository.findById(Integer.parseInt(buttonValue)).get();
                 break;
             case "burger":
                 product = burgerRepository.findById(Integer.parseInt(buttonValue)).get();
                 break;
+            case "sauce":
+                product = sauceRepository.findById(Integer.parseInt(buttonValue)).get();
+                break;
             default:
                 throw new IllegalStateException("Unexpected value: " + typeOfSnack);
         }
-       return product;
+        return product;
     }
 
     public OrderDetail createOrderRow(HttpServletRequest request, HttpSession session) {
@@ -70,6 +76,10 @@ public class OrderService {
         order.getOrderDetail().add(orderDetail);
     }
 
+    public void removeOrderDetailFromOrder(Order order, int id) {
+        order.getOrderDetail().remove(id);
+    }
+
     public void setOrderPaymentMethod(Order order, String paymentMethod) {
         order.setPaymentMethod(paymentMethod);
     }
@@ -80,15 +90,15 @@ public class OrderService {
 
 
     public void saveOrder(Order order) {
-        for(int i = 0; i < order.getOrderDetail().size(); i++){
+        for (int i = 0; i < order.getOrderDetail().size(); i++) {
             saveOrderDetailRow(order.getOrderDetail().get(1));
         }
         orderRepository.save(order);
     }
 
-    public double calculateTotalAmountOfOrder(Order order){
+    public double calculateTotalAmountOfOrder(Order order) {
         double total = 0;
-        for(int i = 0; i < order.getOrderDetail().size(); i++){
+        for (int i = 0; i < order.getOrderDetail().size(); i++) {
             total += order.getOrderDetail().get(i).getProduct().getPriceSold();
         }
         return total;

@@ -1,5 +1,4 @@
-function PrintDiv()
-{
+function PrintDiv() {
     var divContents = document.getElementById("printable").innerHTML;
     var printWindow = window.open('', '', 'height=200,width=400');
     printWindow.document.write('<html><head><title>Order</title>');
