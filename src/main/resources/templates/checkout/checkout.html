@@ -32,15 +32,15 @@
     <button onclick="PrintDiv()" type="submit">Bestelling afdrukken</button>
 </div>
 
-<table align="center" class="checkout_buttons">
+<table class="checkout_buttons">
     <thead>
     <tr>
-        <th style="width: auto" valign="top">Producten</th>
+        <th >Producten</th>
     </tr>
-
-
     </thead>
+
     <tbody>
+    <div id="snacks">
     <form method="post" name="orders" th:action="@{/apto}">
         <tr th:each="i : ${#numbers.sequence( 0, #lists.size(snacks), 2)}">
             <td th:if="${i < #lists.size(snacks)}">
@@ -51,9 +51,10 @@
                         th:value="${snacks[i+1].getProductId()}"></button>
                 <input th:name="snackType" type="hidden" value="snack"/>
             </td>
-        </tr>
     </form>
+    </div>
 
+    <div id="sauces">
     <form method="post" name="orders" th:action="@{/apto}">
         <tr th:each="i : ${#numbers.sequence( 0, #lists.size(sauces), 2)}">
             <td th:if="${i < #lists.size(sauces)}">
@@ -64,9 +65,11 @@
                         th:value="${sauces[i+1].getProductId()}"></button>
                 <input th:name="snackType" type="hidden" value="sauce"/>
             </td>
-        </tr>
     </form>
 
+    </div>
+
+    <div id="burgers">
     <form method="post" name="orders" th:action="@{/apto}">
         <tr th:each="i : ${#numbers.sequence( 0, #lists.size(burgers), 2)}">
             <td th:if="${i < #lists.size(burgers)}">
@@ -79,10 +82,8 @@
                         th:value="${burgers[i+1].getProductId()}"></button>
                 <input th:name="snackType" type="hidden" value="burger"/>
             </td>
-        </tr>
     </form>
-
-
+    </div>
     </tbody>
 </table>
 
@@ -94,14 +95,20 @@
             <th th:text="'Order # ' + ${order.getOrderId()} + ' - ' + 'Bediening door: ' + ${session.employee.username} + ' - ' +'Totaal: ‎€' + ${orderTotal} "></th>
         </tr>
         </thead>
+        <form method="post">
         <tbody>
-        <tr th:each="detail : ${orderList}">
-            <td th:text="${detail.getProduct().getProductName()}"/>
-            <td th:text="${detail.getProduct().getPriceSold()}"/>
-            <td th:name="${detail.getQuantity()}"/>
-        </tr>
-        </tbody>
-    </table>
+
+<tr th:each="detail : ${orderList}">
+    <td th:text="${detail.getProduct().getProductName()}"/>
+    <td th:text="${detail.getProduct().getPriceSold()}"/>
+    <td>
+        <a onclick="return confirm('Ben je zeker?')" th:href="@{/deleteRow/{id}(id=${detailStat.count})}">X</a>
+    </td>
+</tr>
+
+</tbody>
+</form>
+</table>
 </div>
 
 </body>

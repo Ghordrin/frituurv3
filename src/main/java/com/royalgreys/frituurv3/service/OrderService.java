@@ -77,7 +77,7 @@ public class OrderService {
     }
 
     public void removeOrderDetailFromOrder(Order order, int id) {
-        order.getOrderDetail().remove(id);
+        order.getOrderDetail().remove(id - 1);
     }
 
     public void setOrderPaymentMethod(Order order, String paymentMethod) {

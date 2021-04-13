@@ -166,7 +166,7 @@ public class AdminFrituurController {
         return "/admin/sauces/adminEditSauces";
     }
 
-    @GetMapping(path = {"/admin/sauces/delete/", "admin/sauce/delete/{id}"})
+    @GetMapping(path = {"/admin/sauces/delete/", "admin/sauces/delete/{id}"})
     public String deleteSauceById(@PathVariable("id") int id) {
         sauceRepository.deleteById(id);
         return "redirect:/admin/sauces/";

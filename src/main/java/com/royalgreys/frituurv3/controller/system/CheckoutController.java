@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -67,6 +68,13 @@ public class CheckoutController {
     public String saveOrder(HttpSession session) {
         Order order = (Order) session.getAttribute("order");
         orderService.saveOrder((order));
+        return "redirect:/checkout";
+    }
+
+    @GetMapping("/deleteRow/{id}")
+    public String deleteRow(@PathVariable("id") int id, HttpSession session){
+        Order order = (Order) session.getAttribute("order");
+        orderService.removeOrderDetailFromOrder(order, id);
         return "redirect:/checkout";
     }
 
