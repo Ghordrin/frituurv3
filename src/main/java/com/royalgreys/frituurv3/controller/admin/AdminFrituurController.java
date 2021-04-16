@@ -17,6 +17,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @Controller
 
 public class AdminFrituurController {
@@ -68,7 +70,7 @@ public class AdminFrituurController {
     }
 
     @PostMapping("/admin/employees/newUser/createNewUser")
-    public String signupUser(@RequestParam(name = "role", defaultValue = "false") boolean isAdmin, Employee employee, Model model, BindingResult result) throws UsernameAlreadyExistsException {
+    public String signupUser(@RequestParam(name = "role", defaultValue = "false") boolean isAdmin, @Valid Employee employee, Model model, BindingResult result) throws UsernameAlreadyExistsException {
         if (result.hasErrors()) {
             return "/login/signup";
         } else {
@@ -101,7 +103,7 @@ public class AdminFrituurController {
     }
 
     @PostMapping("/admin/snacks/new/")
-    public String addSnack(Snack snack) {
+    public String addSnack(@Valid Snack snack) {
         snackRepository.save(snack);
         return "redirect:/admin/snacks/";
     }
@@ -128,7 +130,7 @@ public class AdminFrituurController {
     }
 
     @PostMapping("/admin/burgers/new/")
-    public String addBurger(Burger burger) {
+    public String addBurger(@Valid Burger burger) {
         burgerRepository.save(burger);
         return "redirect:/admin/burgers/";
     }
@@ -155,7 +157,7 @@ public class AdminFrituurController {
     }
 
     @PostMapping("/admin/sauces/new/")
-    public String addSauce(Sauce sauce) {
+    public String addSauce(@Valid Sauce sauce) {
         sauceRepository.save(sauce);
         return "redirect:/admin/sauces/";
     }

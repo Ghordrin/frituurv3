@@ -10,5 +10,4 @@ import java.io.Serializable;
 @DiscriminatorValue("sauce")
 @DiscriminatorOptions(force = true)
 public class Sauce extends Product implements Serializable {
-
-}
+    }

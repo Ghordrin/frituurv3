@@ -11,17 +11,19 @@
     <form method="post" name="f" th:action="@{/admin/employees/newUser/createNewUser}" th:object="${employee}">
         <div id="errors">
             <span th:if="${userNameAlreadyExists}">Er bestaat reeds een gebruiker met deze gebruikersnaam!</span>
+            <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}"> Name error</span>
+            <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"> Name error</span>
         </div>
 
 
         <fieldset>
             <h2>Vul hier de gegevens in om een account aan te maken!</h2>
             <label for="username">Gebruikersnaam</label>
-            <input id="username" maxlength="15" minlength="2" name="username"
+            <input id="username" name="username"
                    required th:field="*{username}" type="text"/>
 
             <label for="password">Wachtwoord</label>
-            <input id="password" maxlength="18" minlength="8" name="password"
+            <input id="password" name="password"
                    required th:field="*{password}" type="password"/>
             <br>
             <label>is gebruiker administrator?</label>

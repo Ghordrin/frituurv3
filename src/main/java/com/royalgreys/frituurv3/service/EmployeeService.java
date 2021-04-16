@@ -15,8 +15,11 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+import javax.validation.Valid;
 import java.util.Optional;
 
+@Transactional
 @Service
 public class EmployeeService implements UserDetailsService {
     @Autowired
@@ -29,18 +32,21 @@ public class EmployeeService implements UserDetailsService {
         return employee.map(CustomUserDetail::new).get();
     }
 
-    public Employee registerNewEmployee(Employee employee) throws UsernameAlreadyExistsException {
+    public Employee registerNewEmployee(@Valid Employee employee) throws UsernameAlreadyExistsException {
         if (employeeExists(employee.getUsername())) {
             throw new UsernameAlreadyExistsException("Er bestaat reeds een gebruiker met deze naam. Gebruik een andere naam aub.");
         } else {
-            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-            String encodedPassword = passwordEncoder.encode(employee.getPassword());
+            String encodedPassword = encodePassword(employee.getPassword());
             employee.setEnabled(1);
-            employee.setRole("ROLE_USER");
             employee.setPassword(encodedPassword);
         }
 
         return employee;
+    }
+
+    private String encodePassword(String password) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        return passwordEncoder.encode(password);
     }
 
 
