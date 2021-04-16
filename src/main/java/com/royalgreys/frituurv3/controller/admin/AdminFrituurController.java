@@ -103,7 +103,10 @@ public class AdminFrituurController {
     }
 
     @PostMapping("/admin/snacks/new/")
-    public String addSnack(@Valid Snack snack) {
+    public String addSnack(@Valid Snack snack, BindingResult result) {
+        if (result.hasErrors()) {
+            return "redirect:/admin/snacks/";
+        }
         snackRepository.save(snack);
         return "redirect:/admin/snacks/";
     }
@@ -130,7 +133,10 @@ public class AdminFrituurController {
     }
 
     @PostMapping("/admin/burgers/new/")
-    public String addBurger(@Valid Burger burger) {
+    public String addBurger(@Valid Burger burger, BindingResult result) {
+        if (result.hasErrors()) {
+            return "redirect:/admin/burgers";
+        }
         burgerRepository.save(burger);
         return "redirect:/admin/burgers/";
     }
@@ -157,7 +163,10 @@ public class AdminFrituurController {
     }
 
     @PostMapping("/admin/sauces/new/")
-    public String addSauce(@Valid Sauce sauce) {
+    public String addSauce(@Valid Sauce sauce, BindingResult result) {
+        if (result.hasErrors()) {
+            return "redirect:/admin/sauces/";
+        }
         sauceRepository.save(sauce);
         return "redirect:/admin/sauces/";
     }

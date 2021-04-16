@@ -37,12 +37,19 @@
 
 
 <form align="center" method="post" name="postProduct" th:action="@{/admin/snacks/new/}" th:object="${newSnack}">
+
+    <div id="errors">
+        <span th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}"> Name error</span>
+        <span th:if="${#fields.hasErrors('priceSold')}" th:errors="*{priceSold}"> Name error</span>
+        <span th:if="${#fields.hasErrors('priceBought')}" th:errors="*{priceBought}"> Name error</span>
+    </div>
+
     <label>Product naam</label>
-    <input th:field="*{productName}" type="text">
+    <input th:field="*{productName}" type="text" name="productName">
     <label>Product verkoopprijs</label>
-    <input th:field="*{priceSold}" type="text">
+    <input th:field="*{priceSold}" type="text" name="priceSold">
     <label>Product aankoopprijs</label>
-    <input th:field="*{priceBought}" type="text">
+    <input th:field="*{priceBought}" type="text" name="priceBought">
     <button align="center" type="submit">Product toevoegen</button>
 </form>
 
