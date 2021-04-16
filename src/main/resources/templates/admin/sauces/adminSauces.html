@@ -40,8 +40,6 @@
 
     <div id="errors">
         <span th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}"> Name error</span>
-        <span th:if="${#fields.hasErrors('priceSold')}" th:errors="*{priceSold}"> Name error</span>
-        <span th:if="${#fields.hasErrors('priceBought')}" th:errors="*{priceBought}"> Name error</span>
     </div>
 
     <label>Product naam</label>

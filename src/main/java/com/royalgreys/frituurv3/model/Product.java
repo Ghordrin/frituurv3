@@ -1,8 +1,7 @@
 package com.royalgreys.frituurv3.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 
 @Entity(name = "product")
@@ -13,10 +12,9 @@ public abstract class Product implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int productId;
 
-    @NotNull(message = "De product naam mag niet leeg zijn!")
+    @NotBlank(message = "De product naam mag niet leeg zijn!")
     private String productName;
 
-    @Pattern(regexp = "^[0-9]*\\.[0-9]+$", message = "Je getal moet minstens 1 cijfer na de komma bevatten!")
     private double priceBought;
 
     private double priceSold;
