@@ -73,11 +73,22 @@ public class OrderService {
 
 
     public void addOrderDetailToOrderDetailList(Order order, OrderDetail orderDetail) {
-        order.getOrderDetail().add(orderDetail);
+
+        if (orderRepository.existsById(order.getOrderId())) {
+            System.out.println("Order is reeds opgeslagen!");
+        } else {
+            order.getOrderDetail().add(orderDetail);
+        }
+
     }
 
     public void removeOrderDetailFromOrder(Order order, int id) {
-        order.getOrderDetail().remove(id - 1);
+        if (orderRepository.existsById(order.getOrderId())) {
+            System.out.println("Order is reeds opgeslagen!");
+        } else {
+            order.getOrderDetail().remove(id - 1);
+        }
+
     }
     
     public void removeAllFromOrder(Order order){

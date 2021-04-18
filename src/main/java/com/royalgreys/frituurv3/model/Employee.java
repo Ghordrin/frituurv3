@@ -15,7 +15,7 @@ public class Employee implements Serializable {
     @Size(min = 2, max = 15, message = "Gebruikersnaam moet tussen groter dan 1 en kleiner dan 16 karakters zijn!")
     private String username;
 
-    @Size(min = 6, max = 20, message = "Het wachtwoord moet groter dan 5 en kleiner dan 20 karakters zijn!")
+    @Size(min = 6)
     private String password;
     private String role;
     private int enabled;
