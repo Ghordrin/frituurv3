@@ -5,10 +5,15 @@
 @import "interface.css";
 
 .card{
-    width: 400px;
+    width: 450px;
     margin: 0 40px 0 40px;
-}
+    background-color: #d6c7c7 !important;
 
+}
+.card-body{
+    background-color: #cdbdbd !important;
+
+}
 #logo {
     /*animation: bounceIn 0.6s;*/
     /*transform: rotate(0deg) scale(1) translateZ(0);*/
@@ -18,7 +23,7 @@
 
 #orderOverviewForm {
     display: block;
-    height: 300px;
+    height: 250px;
     overflow-y: scroll;
 }
 
@@ -26,12 +31,16 @@
     display: flex;
     flex-direction: row;
     width: 100%;
-    justify-content: space-around;
+    justify-content: space-between;
+}
+
+p{
+    text-align: center !important;
 }
 
 #orderRow p, a {
     font-size: 18px;
-    width: 40px;
+    width: 60px;
 }
 
 
@@ -42,6 +51,10 @@
     margin: auto;
 }
 
+.order-buttons button{
+    width: 180px;
+    height: 70px;
+}
 #sauces, #burgers, #snacks {
     display: inline-grid;
 }
@@ -58,6 +71,8 @@
     width: 100%;
     font-size: 25px;
     text-align: center;
+    background-color: #008532;
+    color: #adacac;
 }
 
 button {

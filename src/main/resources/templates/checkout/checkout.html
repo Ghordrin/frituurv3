@@ -39,6 +39,7 @@
 </div>
 
 <!--  modal information here -->
+<form action="post" th:action="@{/deleteAll}">
 <div class="modal" id="orderDeleteModal" role="dialog" tabindex="-1">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -52,26 +53,27 @@
                 <p>Ben je zeker dat je het order VOLLEDIG wil schrappen?</p>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" type="button" th:action="@{/deleteAll}">Ja</button>
+                <button class="btn btn-primary" type="button">Ja</button>
                 <button class="btn btn-secondary" data-dismiss="modal" type="button">Neen</button>
             </div>
         </div>
     </div>
 </div>
+</form>
 
 <div class="d-flex justify-content-center" style="display: inline-flex">
     <div class="card">
         <div class="card-body">
             <div id="snacks">
-                <div class="row p-1 justify-content-between"
+                <div class="row justify-content-between"
                      th:each="i : ${#numbers.sequence(0, #lists.size(snacks), 2)}">
                     <form method="post" name="orders" th:action="@{/apto}">
                         <div class="col" th:if="${i < #lists.size(snacks)}">
-                            <button class="btn m-2" th:id="'snack1_' + ${snacks[i].getProductId()}"
+                            <button class="btn m-1" th:id="'snack1_' + ${snacks[i].getProductId()}"
                                     th:name="buttonSnack"
                                     th:text="${snacks[i].getProductName()}" th:value="${snacks[i].getProductId()}">
                             </button>
-                            <button class="btn m-2" th:id="'snack2_' + ${snacks[i+1].getProductId()}"
+                            <button class="btn m-1" th:id="'snack2_' + ${snacks[i+1].getProductId()}"
                                     th:if="${i + 1 < #lists.size(snacks)}"
                                     th:name="buttonSnack" th:text="${snacks[i+1].getProductName()}"
                                     th:value="${snacks[i+1].getProductId()}">
@@ -87,15 +89,15 @@
     <div class="card">
         <div class="card-body">
             <div id="sauces">
-                <div class="row p-1 justify-content-between"
+                <div class="row justify-content-between"
                      th:each="i : ${#numbers.sequence(0, #lists.size(sauces), 2)}">
                     <form method="post" name="orders" th:action="@{/apto}">
                         <div class="col" th:if="${i < #lists.size(sauces)}">
-                            <button class="btn m-2" th:id="'sauce1_' + ${sauces[i].getProductId()}"
+                            <button class="btn m-1" th:id="'sauce1_' + ${sauces[i].getProductId()}"
                                     th:name="buttonSnack"
                                     th:text="${sauces[i].getProductName()}" th:value="${sauces[i].getProductId()}">
                             </button>
-                            <button class="btn m-2" th:id="'sauce2_' + ${sauces[i+1].getProductId()}"
+                            <button class="btn m-1" th:id="'sauce2_' + ${sauces[i+1].getProductId()}"
                                     th:if="${i + 1 < #lists.size(sauces)}"
                                     th:name="buttonSnack" th:text="${sauces[i+1].getProductName()}"
                                     th:value="${sauces[i+1].getProductId()}">
@@ -111,16 +113,16 @@
     <div class="card">
         <div class="card-body">
             <div id="burgers">
-                <div class="row p-1 justify-content-between"
+                <div class="row justify-content-between"
                      th:each="i : ${#numbers.sequence(0, #lists.size(burgers), 2)}">
                     <form method="post" name="orders" th:action="@{/apto}">
                         <div class="col" th:if="${i < #lists.size(burgers)}">
-                            <button class="btn m-2" th:id="'burger1_' + ${burgers[i].getProductId()}"
+                            <button class="btn m-1" th:id="'burger1_' + ${burgers[i].getProductId()}"
                                     th:name="buttonSnack"
                                     th:text="${burgers[i].getProductName()}"
                                     th:value="${burgers[i].getProductId()}">
                             </button>
-                            <button class="btn m-2" th:id="'burger2_' + ${burgers[i+1].getProductId()}"
+                            <button class="btn m-1" th:id="'burger2_' + ${burgers[i+1].getProductId()}"
                                     th:if="${i + 1 < #lists.size(burgers)}"
                                     th:name="buttonSnack" th:text="${burgers[i+1].getProductName()}"
                                     th:value="${burgers[i+1].getProductId()}">
@@ -140,6 +142,9 @@
            th:text="'Order # ' + ${order.getOrderId()} + ' - ' + 'Bediening door: ' + ${session.employee.username} + ' - ' +'Totaal: ‎€' + ${orderTotal} ">
     </label>
     <form id="orderOverviewForm" method="post">
+        <label th:if="${orderList == null}" style="width: 100%; align-content: center">
+            <p>Er is nog geen nieuw order aangemaakt! Klik op 'nieuwe bestelling' om een nieuw order te starten!</p>
+        </label>
         <label id="orderRow" th:each="detail : ${orderList}">
             <p th:text="${detail.getProduct().getProductName()}"/>
             <p th:text="'€' + '' + ${detail.getProduct().getPriceSold()}"/>

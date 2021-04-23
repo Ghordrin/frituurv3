@@ -2,11 +2,18 @@
 
 
 body {
-    background: #c6b9b9;
+    background: #c6b9b9 !important;
     padding: 40px;
     font-family: "Open Sans Condensed", sans-serif;
 }
 
+.container-fluid{
+    background: #c6b9b9 !important;
+}
+
+.d-flex{
+    background: #c6b9b9 !important;
+}
 label {
     font-size: 22px;
 }
@@ -68,7 +75,7 @@ form button[type=submit] {
     color: #e2e8e8;
     text-shadow: 0 1px 0 #aebfbf;
     text-transform: uppercase;
-    background: #25552a;
+    background: #25552a !important;
     cursor: pointer;
 }
 

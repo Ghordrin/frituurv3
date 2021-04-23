@@ -1,17 +1,35 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <link rel="stylesheet" th:href="@{/static/styles/admin.css}">
+<link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
 <head>
     <meta charset="UTF-8">
     <title>Royal Greys - Frituur</title>
 </head>
 <div th:include="header :: header"></div>
 <body>
-<div id="admin-panel-wrapper">
-    <div class="navigation-wrapper">
+<div class="admin-panel-wrapper">
+    <div class="d-flex justify-content-space-evenly">
+        <div class="card">
+            <div class="card-body">
         <a th:href="@{/admin/employees}">Medewerkers</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
         <a th:href="@{/admin/snacks}">Snacks</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
         <a th:href="@{/admin/burgers}">Burgers</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
         <a th:href="@{/admin/sauces}">Sauzen</a>
+            </div>
+        </div>
     </div>
 </div>
 </body>
