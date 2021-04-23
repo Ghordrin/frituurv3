@@ -2,8 +2,9 @@
       xmlns:th="http://www.thymeleaf.org">
 <link rel="stylesheet" th:href="@{/static/styles/checkout.css}">
 <script th:src="@{/static/js/print.js}"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script th:src="@{/static/js/ModalHandler.js}"></script>
+<link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
 <head>
     <meta charset="UTF-8">
     <title>Royal Greys - Frituur</title>
@@ -21,11 +22,14 @@
 <body class="container-fluid justify-content-between">
 
 
-<div style="display: flex; justify-content: space-around">
+<div class="order-buttons">
 
     <form align="center" method="get" name="handleOrder" th:action="@{/newOrder}">
         <button type="submit">Nieuwe bestelling</button>
     </form>
+
+    <button onclick="removeRowModelHandler(); return false;" data-toggle="modal" type="submit">Bestelling schrappen
+    </button>
 
     <form align="center" method="post" name="saveOrder" th:action="@{/saveOrder}">
         <button type="submit">Bestelling opslaan</button>
@@ -34,7 +38,28 @@
     <button onclick="PrintDiv()" type="submit">Bestelling afdrukken</button>
 </div>
 
-<div class="container" style="display: inline-flex">
+<!--  modal information here -->
+<div class="modal" id="orderDeleteModal" role="dialog" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Bestelling schrappen? </h5>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Ben je zeker dat je het order VOLLEDIG wil schrappen?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" th:action="@{/deleteAll}">Ja</button>
+                <button class="btn btn-secondary" data-dismiss="modal" type="button">Neen</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex justify-content-center" style="display: inline-flex">
     <div class="card">
         <div class="card-body">
             <div id="snacks">
@@ -111,28 +136,32 @@
 
 
 <div class="order_overview" id="printable">
-    <table>
-        <thead>
-        <tr>
-            <th th:text="'Order # ' + ${order.getOrderId()} + ' - ' + 'Bediening door: ' + ${session.employee.username} + ' - ' +'Totaal: ‎€' + ${orderTotal} "></th>
-        </tr>
-        </thead>
-        <form method="post">
-            <tbody>
-
-            <tr th:each="detail : ${orderList}">
-                <td th:text="${detail.getProduct().getProductName()}"/>
-                <td th:text="${detail.getProduct().getPriceSold()}"/>
-                <td>
-                    <a onclick="return confirm('Ben je zeker?')"
-                       th:href="@{/deleteRow/{id}(id=${detailStat.count})}">X</a>
-                </td>
-            </tr>
-
-            </tbody>
-        </form>
-    </table>
+    <label id="header"
+           th:text="'Order # ' + ${order.getOrderId()} + ' - ' + 'Bediening door: ' + ${session.employee.username} + ' - ' +'Totaal: ‎€' + ${orderTotal} ">
+    </label>
+    <form id="orderOverviewForm" method="post">
+        <label id="orderRow" th:each="detail : ${orderList}">
+            <p th:text="${detail.getProduct().getProductName()}"/>
+            <p th:text="'€' + '' + ${detail.getProduct().getPriceSold()}"/>
+            <p><a onclick="return confirm('Ben je zeker?')"
+                  th:href="@{/deleteRow/{id}(id=${detailStat.count})}">×</a
+            ></p>
+        </label>
+    </form>
 </div>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script crossorigin="anonymous"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 </body>
 <footer>

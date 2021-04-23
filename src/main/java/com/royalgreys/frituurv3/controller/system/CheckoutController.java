@@ -55,11 +55,25 @@ public class CheckoutController {
         return "redirect:/checkout";
     }
 
+    @GetMapping("/deleteAll")
+    public String deleteAllRowsFromOrder(HttpSession session) {
+        Order order = (Order) session.getAttribute("order");
+        orderService.removeAllFromOrder(order);
+        return "redirect:/checkout";
+    }
+
     @PostMapping("/apto")
     public String productToList(HttpServletRequest request, HttpSession session) {
-        Order order = (Order) session.getAttribute("order");
-        OrderDetail orderDetail = orderService.createOrderRow(request, session);
-        orderService.addOrderDetailToOrderDetailList(order, orderDetail);
+
+        if (session.getAttribute("order") == null) {
+            System.out.println("Er is momenteel geen order open!");
+        } else {
+            Order order = (Order) session.getAttribute("order");
+            OrderDetail orderDetail = orderService.createOrderRow(request, session);
+            orderService.addOrderDetailToOrderDetailList(order, orderDetail);
+
+        }
+
         return "redirect:/checkout";
     }
 

@@ -5,8 +5,10 @@
 @import "interface.css";
 
 .card{
-    width: 250px;
+    width: 400px;
+    margin: 0 40px 0 40px;
 }
+
 #logo {
     /*animation: bounceIn 0.6s;*/
     /*transform: rotate(0deg) scale(1) translateZ(0);*/
@@ -14,11 +16,30 @@
     cursor: pointer;
 }
 
+#orderOverviewForm {
+    display: block;
+    height: 300px;
+    overflow-y: scroll;
+}
 
-table {
-    margin: auto;
+#orderRow {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+}
+
+#orderRow p, a {
+    font-size: 18px;
+    width: 40px;
+}
+
+
+.order-buttons {
     width: 80%;
-    border-collapse: collapse;
+    display: flex;
+    justify-content: space-evenly;
+    margin: auto;
 }
 
 #sauces, #burgers, #snacks {
@@ -27,27 +48,16 @@ table {
 
 .order_overview {
     height: 300px;
+    width: 80%;
+    justify-content: space-evenly;
+    margin: auto;
+    align-content: center;
 }
 
-.order_overview thead {
-    position: -webkit-sticky;
-    width: 80%;
-}
-
-.order_overview tbody {
-    display: inline-block;
-    overflow-y: scroll;
-    height: 300px;
-    width: 80%;
-}
-.checkout_buttons tbody{
-    display: flex;
-    flex-direction: row;
-    height: 30vh;
-    width: 80%;
-}
-
-.checkout_buttons table{
+#header {
+    width: 100%;
+    font-size: 25px;
+    text-align: center;
 }
 
 button {
@@ -58,27 +68,3 @@ button {
 
 }
 
-
-
-th {
-    background: #1d5a11;
-    font-weight: bold;
-    padding: 10px;
-    text-align: center;
-    font-size: 18px;
-    backdrop-filter: blur(10px);
-    align-content: center;
-    color: #000000;
-    width: auto;
-}
-
-td{
-    padding: 10px;
-    text-align: center;
-    font-size: 18px;
-    backdrop-filter: blur(10px);
-    align-content: center;
-    width: 400px;
-    color: #000000;
-
-}

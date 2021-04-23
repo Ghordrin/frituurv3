@@ -92,7 +92,11 @@ public class OrderService {
     }
     
     public void removeAllFromOrder(Order order){
-        order.getOrderDetail().clear();
+        if (orderRepository.existsById(order.getOrderId())) {
+            System.out.println("Order is reeds opgeslagen!");
+        } else {
+            order.getOrderDetail().clear();
+        }
     }
 
     public void setOrderPaymentMethod(Order order, String paymentMethod) {
