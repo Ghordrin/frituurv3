@@ -86,11 +86,15 @@ public class CheckoutController {
     }
 
     @GetMapping("/deleteRow/{id}")
-    public String deleteRow(@PathVariable("id") int id, HttpSession session){
+    public String deleteRow(@PathVariable("id") int id, HttpSession session) {
         Order order = (Order) session.getAttribute("order");
         orderService.removeOrderDetailFromOrder(order, id);
         return "redirect:/checkout";
     }
+
+
+    //atrributes
+
 
     @ModelAttribute("snacks")
     public List<Snack> productList() {

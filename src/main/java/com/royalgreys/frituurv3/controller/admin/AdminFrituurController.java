@@ -17,7 +17,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 
@@ -53,6 +56,10 @@ public class AdminFrituurController {
 
     @GetMapping(path = {"/admin/employees/edit/", "/admin/employees/edit/{id}"})
     public String updateEmployeeById(@PathVariable("id") int id, Model model) {
+        final List<String> roles = new ArrayList<>();
+        roles.add("ROLE_USER");
+        roles.add("ROLE_ADMIN");
+        model.addAttribute("roleList", roles);
         model.addAttribute("employee", employeeRepository.findById(id));
         return "/admin/employees/adminEditEmployee";
     }
@@ -61,6 +68,17 @@ public class AdminFrituurController {
     public String deleteEmployeeById(@PathVariable("id") int id) {
         employeeRepository.deleteById(id);
         return "redirect:/admin/employees/";
+    }
+
+    @PostMapping(path = {"/admin/employees/update/", "admin/employees/update/{id}"})
+    public String updateEmployeeById(@PathVariable("id") int id, HttpServletRequest request) {
+        Employee employee = employeeRepository.findById(id).get();
+
+        employee.setUsername(request.getParameter("employeeName"));
+        employee.setRole(request.getParameter("employeeRole"));
+        employeeRepository.save(employee);
+        return "redirect:/admin/employees/";
+
     }
 
     @GetMapping("/admin/employees/newUser")
@@ -123,6 +141,16 @@ public class AdminFrituurController {
         return "redirect:/admin/snacks/";
     }
 
+    @PostMapping(path = {"/admin/snacks/update", "admin/snacks/update/{id}"})
+    public String updateSnackById(@PathVariable("id") int id, HttpServletRequest request) {
+        Snack snack = snackRepository.findById(id).get();
+        snack.setProductName(request.getParameter("productName"));
+        snack.setPriceSold(Double.parseDouble(request.getParameter("priceSold")));
+        snack.setPriceBought(Double.parseDouble(request.getParameter("priceBought")));
+        snackRepository.save(snack);
+        return "redirect:/admin/snacks/";
+    }
+
     // Burgers
 
     @GetMapping("/admin/burgers")
@@ -153,6 +181,17 @@ public class AdminFrituurController {
         return "redirect:/admin/burgers/";
     }
 
+    @PostMapping(path = {"/admin/burgers/update/", "admin/burgers/update/{id}"})
+    public String updateBurgerByid(@PathVariable("id") int id, HttpServletRequest request) {
+        Burger burger = burgerRepository.findById(id).get();
+        burger.setProductName(request.getParameter("productName"));
+        burger.setPriceSold(Double.parseDouble(request.getParameter("priceSold")));
+        burger.setPriceBought(Double.parseDouble(request.getParameter("priceBought")));
+        burgerRepository.save(burger);
+        return "redirect:/admin/burgers";
+
+    }
+
     // Sauce
 
     @GetMapping("/admin/sauces")
@@ -180,6 +219,16 @@ public class AdminFrituurController {
     @GetMapping(path = {"/admin/sauces/delete/", "admin/sauces/delete/{id}"})
     public String deleteSauceById(@PathVariable("id") int id) {
         sauceRepository.deleteById(id);
+        return "redirect:/admin/sauces/";
+    }
+
+    @PostMapping(path = {"/admin/sauces/update/", "admin/sauces/update/{id}"})
+    public String updateSaucesById(@PathVariable("id") int id, HttpServletRequest request) {
+        Sauce sauce = sauceRepository.findById(id).get();
+        sauce.setProductName(request.getParameter("productName"));
+        sauce.setPriceSold(Double.parseDouble(request.getParameter("priceSold")));
+        sauce.setPriceBought(Double.parseDouble(request.getParameter("priceBought")));
+        sauceRepository.save(sauce);
         return "redirect:/admin/sauces/";
     }
 

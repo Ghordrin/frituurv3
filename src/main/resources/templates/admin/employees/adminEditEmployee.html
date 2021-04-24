@@ -8,13 +8,19 @@
 
 <div th:include="header :: header"></div>
 <body>
-<form action="#" method="post" th:action="@{/admin/updateEmployee}" th:object="${employee}">
+<form action="#" method="post" th:action="@{/admin/employees/update/{id}(id=${employee.get().getEmployee_id()})}"
+      th:object="${employee}">
+
+
     <label>ID</label>
     <input disabled="disabled" th:value="${employee.get().getEmployee_id()}" type="text">
     <label>Gebruikersnaam</label>
-    <input th:value="${employee.get().getUsername()}" type="text">
+    <input th:value="${employee.get().getUsername()}" type="text" name="employeeName">
     <label>Toegang</label>
-    <input th:value="${employee.get().getRole()}" type="text">
+    <select th:value="${employee.get().getRole()}" th:name="employeeRole">
+        <option value="ROLE_USER" th:text="ROLE_USER"></option>
+        <option value="ROLE_ADMIN" th:text="ROLE_ADMIN"></option>
+    </select>
     <label>Aanpassen</label>
     <button th:value="${employee.get().getEmployee_id()}" type="submit">SAVE</button>
 

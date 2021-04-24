@@ -7,15 +7,16 @@
 </head>
 <div th:include="header :: header"></div>
 <body>
-<form action="#" method="post" th:action="@{/admin/burgers/update}" th:object="${burger}">
+<form action="#" method="post" th:action="@{/admin/burgers/update/{id}(id=${burger.get().getProductId()})}"
+      th:object="${burger}">
     <label>ID</label>
     <input disabled="disabled" th:value="${burger.get().getProductId()}" type="text">
     <label>Product naam</label>
-    <input th:value="${burger.get().getProductName()}" type="text">
+    <input th:value="${burger.get().getProductName()}" type="text" name="productName">
     <label>Product verkoopprijs</label>
-    <input th:value="${burger.get().getPriceSold()}" type="text">
+    <input th:value="${burger.get().getPriceSold()}" type="text" name="priceSold">
     <label>Product aankoopprijs</label>
-    <input th:value="${burger.get().getPriceBought()}" type="text">
+    <input th:value="${burger.get().getPriceBought()}" type="text" name="priceBought">
     <label>Aanpassen</label>
     <button th:value="${burger.get().getProductId()}" type="submit">SAVE</button>
 

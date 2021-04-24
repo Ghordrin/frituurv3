@@ -1,7 +1,7 @@
 @import "interface.css";
 
 body {
-    background-color: lightgray;
+
 }
 
 #container {
@@ -48,7 +48,6 @@ th {
 
 td, th {
     padding: 10px;
-    border: 1px solid #ccc;
     text-align: left;
     font-size: 18px;
     backdrop-filter: blur(10px);
