@@ -2,7 +2,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <link rel="stylesheet" th:href="@{/static/styles/checkout.css}">
 <script th:src="@{/static/js/print.js}"></script>
-<script th:src="@{/static/js/ModalHandler.js}"></script>
+<script th:src="@{/static/js/OrderHandler.js}"></script>
 <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
 <head>
@@ -27,9 +27,12 @@
     <form align="center" method="get" name="handleOrder" th:action="@{/newOrder}">
         <button type="submit">Nieuwe bestelling</button>
     </form>
-
-    <button onclick="removeRowModelHandler(); return false;" data-toggle="modal" type="submit">Bestelling schrappen
-    </button>
+    <form method="get" name="deleteOrderRows" th:action="@{/deleteAll}">
+        <button type="submit"
+                onclick="return confirm('Ben je zeker dat je alle orderrijen wil verwijderen van dit order?')">
+            Bestelling schrappen
+        </button>
+    </form>
 
     <form align="center" method="post" name="saveOrder" th:action="@{/saveOrder}">
         <button type="submit">Bestelling opslaan</button>
@@ -38,8 +41,8 @@
     <button onclick="PrintDiv()" type="submit">Bestelling afdrukken</button>
 </div>
 
-<!--  modal information here -->
-<form action="post" th:action="@{/deleteAll}">
+<!--  modal information here
+
 <div class="modal" id="orderDeleteModal" role="dialog" tabindex="-1">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -53,13 +56,13 @@
                 <p>Ben je zeker dat je het order VOLLEDIG wil schrappen?</p>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" type="button">Ja</button>
+                <button class="btn btn-primary" type="button" >Ja</button>
                 <button class="btn btn-secondary" data-dismiss="modal" type="button">Neen</button>
             </div>
         </div>
     </div>
 </div>
-</form>
+-->
 
 <div class="d-flex justify-content-center" style="display: inline-flex">
     <div class="card">

@@ -1,6 +1,5 @@
 
 body {
-    background-color: #c6b9b9 !important;
     height: 95%;
     overflow: hidden;
 }
@@ -44,12 +43,11 @@ header {
 
 .nav-bar ul {
     list-style: none;
-    background: #adacac;
+    background: #f3f3f3;
     overflow: hidden;
     height: auto;
     display: flex;
     width: 100%;
-    padding: 0;
 
 }
 
@@ -66,18 +64,19 @@ header {
 
 }
 
-button{
+button {
     height: 40px;
     width: 100px;
+    cursor: pointer;
 }
 
 
 .btn {
     height: 55px;
     width: 175px;
-    font-size: 12px !important;
-    background-color: #ddc9c9 !important;
-    text-transform: uppercase;
+    font-size: 10px !important;
+    background-color: #46a528 !important;
+    color: white;
 }
 
 .btn:hover {
