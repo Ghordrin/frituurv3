@@ -11,7 +11,7 @@
     <groupId>com.royalgreys</groupId>
     <artifactId>frituurv3</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>frituurv3</name>
     <description>Begin project frituur Royal Greys</description>
     <properties>
