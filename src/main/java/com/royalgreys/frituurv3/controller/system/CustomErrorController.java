@@ -21,12 +21,12 @@ public class CustomErrorController implements ErrorController {
         if (status != null) {
             int statusCode = Integer.parseInt(status.toString());
             if (statusCode == HttpStatus.NOT_FOUND.value()) {
-                return "/error/error-404";
+                return "error/error-404";
             } else if (statusCode == HttpStatus.FORBIDDEN.value()) {
-                return "/error/access-denied";
+                return "error/access-denied";
             }
         }
-        return "/error/error";
+        return "error/error";
     }
 
     @Override

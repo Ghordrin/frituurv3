@@ -43,7 +43,7 @@ public class AdminFrituurController {
 
     @GetMapping("/admin")
     public String adminPanel() {
-        return "/admin/admin";
+        return "admin/admin";
     }
 
 
@@ -51,7 +51,7 @@ public class AdminFrituurController {
     @GetMapping("/admin/employees")
     public String getEmployees(Model model) {
         model.addAttribute("employees", employeeRepository.findAll());
-        return "/admin/employees/adminEmployees";
+        return "admin/employees/adminEmployees";
     }
 
     @GetMapping(path = {"/admin/employees/edit/", "/admin/employees/edit/{id}"})
@@ -61,13 +61,13 @@ public class AdminFrituurController {
         roles.add("ROLE_ADMIN");
         model.addAttribute("roleList", roles);
         model.addAttribute("employee", employeeRepository.findById(id));
-        return "/admin/employees/adminEditEmployee";
+        return "admin/employees/adminEditEmployee";
     }
 
     @GetMapping(path = {"/admin/employees/delete/", "admin/employees/delete/{id}"})
     public String deleteEmployeeById(@PathVariable("id") int id) {
         employeeRepository.deleteById(id);
-        return "redirect:/admin/employees/";
+        return "redirect:/admin/employees";
     }
 
     @PostMapping(path = {"/admin/employees/update/", "admin/employees/update/{id}"})
@@ -77,20 +77,20 @@ public class AdminFrituurController {
         employee.setUsername(request.getParameter("employeeName"));
         employee.setRole(request.getParameter("employeeRole"));
         employeeRepository.save(employee);
-        return "redirect:/admin/employees/";
+        return "redirect:/admin/employees";
 
     }
 
     @GetMapping("/admin/employees/newUser")
     public String signup(Model model) {
         model.addAttribute("employee", new Employee());
-        return "/login/signup";
+        return "login/signup";
     }
 
     @PostMapping("/admin/employees/newUser/createNewUser")
     public String signupUser(@RequestParam(name = "role", defaultValue = "false") boolean isAdmin, @Valid Employee employee, Model model, BindingResult result) throws UsernameAlreadyExistsException {
         if (result.hasErrors()) {
-            return "/login/signup";
+            return "login/signup";
         } else {
             try {
                 employeeService.registerNewEmployee(employee);
@@ -104,10 +104,10 @@ public class AdminFrituurController {
                 employeeRepository.save(employee);
             } catch (UsernameAlreadyExistsException exception) {
                 model.addAttribute("userNameAlreadyExists", exception.getMessage());
-                return "/login/signup";
+                return "login/signup";
             }
         }
-        return "/login/register_succes";
+        return "login/register_succes";
     }
 
     // snacks
@@ -123,10 +123,10 @@ public class AdminFrituurController {
     @PostMapping("/admin/snacks/new/")
     public String addSnack(@Valid Snack snack, BindingResult result) {
         if (result.hasErrors()) {
-            return "redirect:/admin/snacks/";
+            return "redirect:/admin/snacks";
         }
         snackRepository.save(snack);
-        return "redirect:/admin/snacks/";
+        return "redirect:/admin/snacks";
     }
 
     @GetMapping(path = {"/admin/snacks/edit/", "/admin/snacks/edit/{id}"})
@@ -138,7 +138,7 @@ public class AdminFrituurController {
     @GetMapping(path = {"/admin/snacks/delete/", "admin/snacks/delete/{id}"})
     public String deleteSnackById(@PathVariable("id") int id) {
         snackRepository.deleteById(id);
-        return "redirect:/admin/snacks/";
+        return "redirect:/admin/snacks";
     }
 
     @PostMapping(path = {"/admin/snacks/update", "admin/snacks/update/{id}"})
@@ -148,7 +148,7 @@ public class AdminFrituurController {
         snack.setPriceSold(Double.parseDouble(request.getParameter("priceSold")));
         snack.setPriceBought(Double.parseDouble(request.getParameter("priceBought")));
         snackRepository.save(snack);
-        return "redirect:/admin/snacks/";
+        return "redirect:/admin/snacks";
     }
 
     // Burgers
@@ -166,19 +166,19 @@ public class AdminFrituurController {
             return "redirect:/admin/burgers";
         }
         burgerRepository.save(burger);
-        return "redirect:/admin/burgers/";
+        return "redirect:/admin/burgers";
     }
 
     @GetMapping(path = {"/admin/burgers/edit/", "/admin/burgers/edit/{id}"})
     public String updateBurgerById(@PathVariable("id") int id, Model model) {
         model.addAttribute("burger", burgerRepository.findById(id));
-        return "/admin/burgers/adminEditBurgers";
+        return "admin/burgers/adminEditBurgers";
     }
 
     @GetMapping(path = {"/admin/burgers/delete/", "admin/burgers/delete/{id}"})
     public String deleteBurgerById(@PathVariable("id") int id) {
         burgerRepository.deleteById(id);
-        return "redirect:/admin/burgers/";
+        return "redirect:/admin/burgers";
     }
 
     @PostMapping(path = {"/admin/burgers/update/", "admin/burgers/update/{id}"})
@@ -204,22 +204,22 @@ public class AdminFrituurController {
     @PostMapping("/admin/sauces/new/")
     public String addSauce(@Valid Sauce sauce, BindingResult result) {
         if (result.hasErrors()) {
-            return "redirect:/admin/sauces/";
+            return "redirect:/admin/sauces";
         }
         sauceRepository.save(sauce);
-        return "redirect:/admin/sauces/";
+        return "redirect:/admin/sauces";
     }
 
     @GetMapping(path = {"/admin/sauces/edit/", "/admin/sauces/edit/{id}"})
     public String updateSauceById(@PathVariable("id") int id, Model model) {
         model.addAttribute("sauce", sauceRepository.findById(id));
-        return "/admin/sauces/adminEditSauces";
+        return "admin/sauces/adminEditSauces";
     }
 
     @GetMapping(path = {"/admin/sauces/delete/", "admin/sauces/delete/{id}"})
     public String deleteSauceById(@PathVariable("id") int id) {
         sauceRepository.deleteById(id);
-        return "redirect:/admin/sauces/";
+        return "redirect:/admin/sauces";
     }
 
     @PostMapping(path = {"/admin/sauces/update/", "admin/sauces/update/{id}"})
@@ -229,7 +229,7 @@ public class AdminFrituurController {
         sauce.setPriceSold(Double.parseDouble(request.getParameter("priceSold")));
         sauce.setPriceBought(Double.parseDouble(request.getParameter("priceBought")));
         sauceRepository.save(sauce);
-        return "redirect:/admin/sauces/";
+        return "redirect:/admin/sauces";
     }
 
 
