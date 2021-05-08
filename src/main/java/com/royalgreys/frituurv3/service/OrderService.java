@@ -110,8 +110,9 @@ public class OrderService {
 
     public void saveOrder(Order order) {
         for (int i = 0; i < order.getOrderDetail().size(); i++) {
-            saveOrderDetailRow(order.getOrderDetail().get(1));
+            saveOrderDetailRow(order.getOrderDetail().get(i));
         }
+        order.setOrderTotal(calculateTotalAmountOfOrder(order));
         orderRepository.save(order);
     }
 

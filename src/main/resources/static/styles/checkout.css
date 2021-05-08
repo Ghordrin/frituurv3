@@ -22,7 +22,7 @@
 
 #orderOverviewForm {
     display: block;
-    height: 250px;
+    height: 375px;
     overflow-y: scroll;
 }
 
@@ -59,7 +59,7 @@ p{
 }
 
 .order_overview {
-    height: 300px;
+    height: 375px;
     width: 80%;
     justify-content: space-evenly;
     margin: auto;

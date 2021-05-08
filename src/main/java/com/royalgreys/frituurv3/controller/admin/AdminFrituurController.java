@@ -132,7 +132,7 @@ public class AdminFrituurController {
     @GetMapping(path = {"/admin/snacks/edit/", "/admin/snacks/edit/{id}"})
     public String updateSnackById(@PathVariable("id") int id, Model model) {
         model.addAttribute("product", snackRepository.findById(id));
-        return "/admin/snacks/adminEditSnack";
+        return "admin/snacks/adminEditSnack";
     }
 
     @GetMapping(path = {"/admin/snacks/delete/", "admin/snacks/delete/{id}"})
