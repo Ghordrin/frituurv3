@@ -11,6 +11,7 @@ import com.royalgreys.frituurv3.repository.EmployeeRepository;
 import com.royalgreys.frituurv3.repository.SauceRepository;
 import com.royalgreys.frituurv3.repository.SnackRepository;
 import com.royalgreys.frituurv3.service.EmployeeService;
+import com.royalgreys.frituurv3.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +41,9 @@ public class AdminFrituurController {
 
     @Autowired
     EmployeeService employeeService;
+
+    @Autowired
+    OrderService orderService;
 
 
     @GetMapping("/admin")
@@ -230,6 +235,19 @@ public class AdminFrituurController {
         sauce.setPriceBought(Double.parseDouble(request.getParameter("priceBought")));
         sauceRepository.save(sauce);
         return "redirect:/admin/sauces";
+    }
+
+    @GetMapping("/admin/orders/total")
+    public String returnOrderTotal(Model model){
+        double orderTotal = orderService.getOrderTotalOfTodayInEuros();
+        LocalDate today = LocalDate.now();
+        int totalOrdersToday = orderService.getTotalAmountOfOrdersOfToday();
+        double highestOrderTotal = orderService.getHighestOrderTotal();
+        model.addAttribute("totalOrdersToday", totalOrdersToday);
+        model.addAttribute("currentDay", today);
+        model.addAttribute("orderTotal", orderTotal);
+        model.addAttribute("highestOrderTotal", highestOrderTotal);
+        return "admin/adminOrderTotal";
     }
 
 

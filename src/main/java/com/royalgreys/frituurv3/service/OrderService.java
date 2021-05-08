@@ -124,4 +124,16 @@ public class OrderService {
         return total;
     }
 
+    public double getOrderTotalOfTodayInEuros(){
+        return orderRepository.getOrderTotalOfToday();
+    }
+
+    public int getTotalAmountOfOrdersOfToday(){
+        return orderRepository.getAmountOfOrdersFromCurrentDay();
+    }
+
+    public int getHighestOrderTotal(){
+        return orderRepository.getHighestOrderTotal();
+    }
+
 }
