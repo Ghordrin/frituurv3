@@ -7,13 +7,14 @@ body {
     font-family: "Open Sans Condensed", sans-serif;
 }
 
-.container-fluid{
+.container-fluid {
     background: #c6b9b9 !important;
 }
 
-.d-flex{
+.d-flex {
     background: #c6b9b9 !important;
 }
+
 label {
     font-size: 22px;
 }

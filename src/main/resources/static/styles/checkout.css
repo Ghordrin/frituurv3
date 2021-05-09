@@ -4,15 +4,13 @@
 
 @import "interface.css";
 
-.card{
+.card {
     width: 450px;
     margin: 0 40px 0 40px;
 
 }
-.card-body{
 
 
-}
 #logo {
     /*animation: bounceIn 0.6s;*/
     /*transform: rotate(0deg) scale(1) translateZ(0);*/
@@ -22,7 +20,7 @@
 
 #orderOverviewForm {
     display: block;
-    height: 375px;
+    height: 300px;
     overflow-y: scroll;
 }
 
@@ -33,13 +31,15 @@
     justify-content: space-between;
 }
 
-p{
-    text-align: center !important;
-}
 
 #orderRow p, a {
     font-size: 18px;
     width: 60px;
+}
+
+
+p {
+    text-align: center !important;
 }
 
 
@@ -50,16 +50,17 @@ p{
     margin: auto;
 }
 
-.order-buttons button{
+.order-buttons button {
     width: 180px;
     height: 70px;
 }
+
 #sauces, #burgers, #snacks {
     display: inline-grid;
 }
 
 .order_overview {
-    height: 375px;
+    height: 350px;
     width: 80%;
     justify-content: space-evenly;
     margin: auto;
@@ -88,7 +89,6 @@ button {
 
 ::-webkit-scrollbar {
     width: 10px;
-    color: #BC0000;
 }
 
 ::-webkit-scrollbar-track {

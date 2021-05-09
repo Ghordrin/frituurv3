@@ -238,7 +238,7 @@ public class AdminFrituurController {
     }
 
     @GetMapping("/admin/orders/total")
-    public String returnOrderTotal(Model model){
+    public String returnOrderTotal(Model model) {
         double orderTotal = orderService.getOrderTotalOfTodayInEuros();
         LocalDate today = LocalDate.now();
         int totalOrdersToday = orderService.getTotalAmountOfOrdersOfToday();
@@ -247,9 +247,14 @@ public class AdminFrituurController {
         model.addAttribute("currentDay", today);
         model.addAttribute("orderTotal", orderTotal);
         model.addAttribute("highestOrderTotal", highestOrderTotal);
-        return "admin/adminOrderTotal";
+        return "admin/orders/adminOrderTotal";
     }
 
+    @GetMapping("/admin/orders/")
+    public String returnAllOrdersOfToday(Model model) {
+        model.addAttribute("orders", orderService.getOrdersOfToday());
+        return "admin/orders/adminOrders";
+    }
 
     //attributes
     @ModelAttribute(value = "newSnack")

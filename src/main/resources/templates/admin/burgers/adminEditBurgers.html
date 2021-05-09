@@ -12,11 +12,11 @@
     <label>ID</label>
     <input disabled="disabled" th:value="${burger.get().getProductId()}" type="text">
     <label>Product naam</label>
-    <input th:value="${burger.get().getProductName()}" type="text" name="productName">
+    <input name="productName" th:value="${burger.get().getProductName()}" type="text">
     <label>Product verkoopprijs</label>
-    <input th:value="${burger.get().getPriceSold()}" type="text" name="priceSold">
+    <input name="priceSold" th:value="${burger.get().getPriceSold()}" type="text">
     <label>Product aankoopprijs</label>
-    <input th:value="${burger.get().getPriceBought()}" type="text" name="priceBought">
+    <input name="priceBought" th:value="${burger.get().getPriceBought()}" type="text">
     <label>Aanpassen</label>
     <button th:value="${burger.get().getProductId()}" type="submit">SAVE</button>
 

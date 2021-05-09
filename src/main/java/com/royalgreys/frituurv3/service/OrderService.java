@@ -90,8 +90,8 @@ public class OrderService {
         }
 
     }
-    
-    public void removeAllFromOrder(Order order){
+
+    public void removeAllFromOrder(Order order) {
         if (orderRepository.existsById(order.getOrderId())) {
             System.out.println("Order is reeds opgeslagen!");
         } else {
@@ -124,16 +124,21 @@ public class OrderService {
         return total;
     }
 
-    public double getOrderTotalOfTodayInEuros(){
+    public double getOrderTotalOfTodayInEuros() {
         return orderRepository.getOrderTotalOfToday();
     }
 
-    public int getTotalAmountOfOrdersOfToday(){
+    public int getTotalAmountOfOrdersOfToday() {
         return orderRepository.getAmountOfOrdersFromCurrentDay();
     }
 
-    public int getHighestOrderTotal(){
+    public int getHighestOrderTotal() {
         return orderRepository.getHighestOrderTotal();
     }
+
+    public List<Order> getOrdersOfToday() {
+        return orderRepository.getAllOrdersFromToday();
+    }
+
 
 }

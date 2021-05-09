@@ -7,30 +7,27 @@
 <body>
 
 </body>
-</html><html xmlns:th="http://www.thymeleaf.org">
+</html>
+<html xmlns:th="http://www.thymeleaf.org">
 <link rel="stylesheet" th:href="@{/static/styles/admin.css}">
 <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
 <head>
-  <meta charset="UTF-8">
-  <title>Royal Greys - Frituur</title>
+    <meta charset="UTF-8">
+    <title>Royal Greys - Frituur</title>
 </head>
 <div th:include="header :: header"></div>
 <body>
-<div class="admin-panel-wrapper">
-  <div class="d-flex justify-content-center">
-    <div class="card">
-      <div class="card-body">
-        <h1 th:text="'Vandaag: ' + ${currentDay}" class="display-4"></h1>
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <h1 class="display-4" th:text="'Vandaag: ' + ${currentDay}"></h1>
         <p th:text="'Order totaal in euro: €' + ${orderTotal}"></p>
         <p th:text="'Aantal orders vandaag: ' + ${totalOrdersToday}"></p>
         <p th:text="'Hoogste order totaal in euro: € ' + ${highestOrderTotal}"></p>
-      </div>
     </div>
-  </div>
 </div>
 </body>
 <footer>
-  <div th:include="footer :: copy"></div>
+    <div th:include="footer :: copy"></div>
 </footer>
 </html>

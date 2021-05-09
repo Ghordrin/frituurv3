@@ -8,32 +8,53 @@
 </head>
 <div th:include="header :: header"></div>
 <body>
-<div class="admin-panel-wrapper">
-    <div class="d-flex justify-content-space-evenly">
-        <div class="card">
-            <div class="card-body">
-        <a th:href="@{/admin/employees}">Medewerkers</a>
+<div>
+    <div class="container" style="height: 50vh;">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <a th:href="@{/admin/employees}">Medewerkers</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <a th:href="@{/admin/snacks}">Snacks</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <a th:href="@{/admin/burgers}">Burgers</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <a th:href="@{/admin/sauces}">Sauzen</a>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="card">
-            <div class="card-body">
-        <a th:href="@{/admin/snacks}">Snacks</a>
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <a th:href="@{/admin/orders/}">Order overzicht vandaag</a>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-        <a th:href="@{/admin/burgers}">Burgers</a>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-        <a th:href="@{/admin/sauces}">Sauzen</a>
-            </div>
-        </div>
 
-        <div class="card">
-            <div class="card-body">
-                <a th:href="@{/admin/orders/total}">Verkoopdag afsluiten</a>
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <a th:href="@{/admin/orders/total}">Verkoopdag afsluiten</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

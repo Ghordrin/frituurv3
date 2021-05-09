@@ -39,15 +39,15 @@
 <form align="center" method="post" name="postProduct" th:action="@{/admin/sauces/new/}" th:object="${newSauce}">
 
     <div id="errors">
-        <span th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}"> Name error</span>
+        <span th:errors="*{productName}" th:if="${#fields.hasErrors('productName')}"> Name error</span>
     </div>
 
     <label>Product naam</label>
-    <input autofocus="autofocus" th:field="*{productName}" type="text" name="productName">
+    <input autofocus="autofocus" name="productName" th:field="*{productName}" type="text">
     <label>Product verkoopprijs</label>
-    <input required th:field="*{priceSold}" type="text" name="priceSold">
+    <input name="priceSold" required th:field="*{priceSold}" type="text">
     <label>Product aankoopprijs</label>
-    <input th:field="*{priceBought}" type="text" name="priceBought">
+    <input name="priceBought" th:field="*{priceBought}" type="text">
     <button align="center" type="submit">Product toevoegen</button>
 </form>
 

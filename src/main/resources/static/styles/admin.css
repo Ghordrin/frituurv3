@@ -5,16 +5,22 @@
 @import "interface.css";
 
 
-.admin-panel-wrapper{
+.admin-panel-wrapper {
     width: 80%;
     display: block;
     justify-content: center;
     margin: auto;
+    height: 90vh;
 }
 
-.card-body{
+#orderForm {
+    overflow-y: scroll;
+}
+
+.card-body {
     width: 400px;
     height: 250px;
+    text-align: center;
 }
 
 a {
@@ -22,7 +28,6 @@ a {
     color: #164e1f !important;
 
 }
-
 
 
 button {

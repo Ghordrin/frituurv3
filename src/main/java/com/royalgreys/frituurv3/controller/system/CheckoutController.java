@@ -41,7 +41,6 @@ public class CheckoutController {
     @GetMapping("/checkout")
     public String getProducts(HttpSession session, Principal principal) {
         session.setAttribute("employee", employeeRepository.findByUsername(principal.getName()).get());
-        System.out.println("Succesfully retrieved checkout page");
         return "checkout/checkout";
     }
 

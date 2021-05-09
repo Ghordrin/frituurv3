@@ -15,11 +15,11 @@
     <label>ID</label>
     <input disabled="disabled" th:value="${employee.get().getEmployee_id()}" type="text">
     <label>Gebruikersnaam</label>
-    <input th:value="${employee.get().getUsername()}" type="text" name="employeeName">
+    <input name="employeeName" th:value="${employee.get().getUsername()}" type="text">
     <label>Toegang</label>
-    <select th:value="${employee.get().getRole()}" th:name="employeeRole">
-        <option value="ROLE_USER" th:text="ROLE_USER"></option>
-        <option value="ROLE_ADMIN" th:text="ROLE_ADMIN"></option>
+    <select th:name="employeeRole" th:value="${employee.get().getRole()}">
+        <option th:text="ROLE_USER" value="ROLE_USER"></option>
+        <option th:text="ROLE_ADMIN" value="ROLE_ADMIN"></option>
     </select>
     <label>Aanpassen</label>
     <button th:value="${employee.get().getEmployee_id()}" type="submit">SAVE</button>

@@ -11,11 +11,11 @@
     <label>ID</label>
     <input disabled="disabled" th:value="${product.get().getProductId()}" type="text">
     <label>Product naam</label>
-    <input th:value="${product.get().getProductName()}" type="text" name="productName">
+    <input name="productName" th:value="${product.get().getProductName()}" type="text">
     <label>Product verkoopprijs</label>
-    <input th:value="${product.get().getPriceSold()}" type="text" name="priceSold">
+    <input name="priceSold" th:value="${product.get().getPriceSold()}" type="text">
     <label>Product aankoopprijs</label>
-    <input th:value="${product.get().getPriceBought()}" type="text" name="priceBought">
+    <input name="priceBought" th:value="${product.get().getPriceBought()}" type="text">
     <label>Aanpassen</label>
     <button th:value="${product.get().getProductId()}" type="submit">SAVE</button>
 
