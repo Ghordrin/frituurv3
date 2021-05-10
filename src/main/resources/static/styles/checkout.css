@@ -12,9 +12,6 @@
 
 
 #logo {
-    /*animation: bounceIn 0.6s;*/
-    /*transform: rotate(0deg) scale(1) translateZ(0);*/
-    /*transition: all 0.4s cubic-bezier(.8,1.8,.75,.75);*/
     cursor: pointer;
 }
 
@@ -34,7 +31,7 @@
 
 #orderRow p, a {
     font-size: 18px;
-    width: 60px;
+    min-width: 200px;
 }
 
 
@@ -86,6 +83,7 @@ button {
 
 }
 
+/* scrollbar content */
 
 ::-webkit-scrollbar {
     width: 10px;

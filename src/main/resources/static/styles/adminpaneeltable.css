@@ -1,9 +1,5 @@
 @import "interface.css";
 
-body {
-
-}
-
 #container {
     justify-content: center;
     display: flex;
@@ -36,7 +32,7 @@ table {
     margin: 50px auto;
 }
 
-/* Zebra striping */
+/* tables  */
 tr:nth-of-type(odd) {
     background: #eee;
 }

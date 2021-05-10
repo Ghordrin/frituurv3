@@ -237,6 +237,9 @@ public class AdminFrituurController {
         return "redirect:/admin/sauces";
     }
 
+
+    //orders
+
     @GetMapping("/admin/orders/total")
     public String returnOrderTotal(Model model) {
         double orderTotal = orderService.getOrderTotalOfTodayInEuros();

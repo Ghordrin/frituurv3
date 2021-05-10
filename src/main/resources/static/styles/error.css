@@ -1,11 +1,6 @@
 /*
  * Copyright (c) 2021. Yannick D - Ghordrin
  */
-
-body {
-
-}
-
 #container {
     width: 60%;
     margin: auto;
@@ -25,13 +20,12 @@ body {
 
 h2 {
     color: red;
-    font-family: "Fira Code Retina";
+    font-family: "Fira Code Retina", sans-serif;
 }
 
 #container-header {
     text-align: center;
     align-content: center;
-
 }
 
 #back-button-wrapper {
@@ -40,8 +34,4 @@ h2 {
     justify-content: center;
     align-items: center;
     height: 10%;
-}
-
-#back-button {
-
 }

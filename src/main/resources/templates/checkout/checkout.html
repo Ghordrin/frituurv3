@@ -130,7 +130,7 @@
             <p th:text="${detail.getProduct().getProductName()}"/>
             <p th:text="'€' + '' + ${detail.getProduct().getPriceSold()}"/>
             <p><a onclick="return confirm('Ben je zeker?')"
-                  th:href="@{/deleteRow/{id}(id=${detailStat.count})}">×</a
+                  th:href="@{/deleteRow/{id}(id=${detailStat.count})}" id="unprintable">×</a
             ></p>
         </label>
     </form>
@@ -150,7 +150,4 @@
         src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 </body>
-<footer>
-    <div th:include="footer :: copy"></div>
-</footer>
 </html>
