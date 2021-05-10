@@ -1,0 +1,35 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/static/styles/adminpaneeltable.css}">
+<head>
+    <meta charset="UTF-8">
+    <title>Royal Greys - Frituur - Order Detail</title>
+</head>
+
+
+<div th:include="header :: header"></div>
+<body>
+
+<table>
+    <thead>
+    <tr>
+        <th valign="top">Order ID:</th>
+        <th valign="top">Product naam:</th>
+        <th valign="top">Verkoop prijs:</th>
+        <th valign="top">Aantal:</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <form align="center" id="orderForm" method="get" name="orderForm" th:action="@{/admin/orders/today}">
+        <tr th:each="orderDetail: ${order.getOrderDetail()}">
+            <td><span th:text="${order.getOrderId()}"> Product naam: </span></td>
+            <td><span th:text="${orderDetail.getProduct().getProductName()}"> Product naam: </span></td>
+            <td><span th:text="${orderDetail.getProduct().getPriceSold()}"> Verkoop prijs: </span></td>
+            <td><span th:text="${orderDetail.getQuantity()}"> Aantal: </span></td>
+        </tr>
+    </form>
+
+    </tbody>
+</table>
+</body>
+</html>

@@ -13,17 +13,14 @@ import java.util.StringJoiner;
 @Entity(name = "orders")
 public class Order implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "orderId")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int orderId;
 
-    @Column(name = "orderTime")
     private LocalDateTime order_time = LocalDateTime.now();
 
     @ManyToOne
     private Employee employee;
 
-    @Column(name = "paymentMethod")
     private String paymentMethod;
 
     @OneToMany(cascade = CascadeType.ALL)
@@ -31,15 +28,15 @@ public class Order implements Serializable {
 
     private double orderTotal;
 
+    public Order() {
+    }
+
     public double getOrderTotal() {
         return orderTotal;
     }
 
     public void setOrderTotal(double orderTotal) {
         this.orderTotal = orderTotal;
-    }
-
-    public Order() {
     }
 
     public Employee getEmployee() {

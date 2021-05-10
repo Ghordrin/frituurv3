@@ -125,19 +125,33 @@ public class OrderService {
     }
 
     public double getOrderTotalOfTodayInEuros() {
+        if (orderRepository.getOrderTotalOfToday() == null) {
+            return 0;
+        }
         return orderRepository.getOrderTotalOfToday();
     }
 
     public int getTotalAmountOfOrdersOfToday() {
+
+        if (orderRepository.getAmountOfOrdersFromCurrentDay() == null) {
+            return 0;
+        }
         return orderRepository.getAmountOfOrdersFromCurrentDay();
     }
 
     public int getHighestOrderTotal() {
+        if (orderRepository.getHighestOrderTotal() == null) {
+            return 0;
+        }
         return orderRepository.getHighestOrderTotal();
     }
 
     public List<Order> getOrdersOfToday() {
         return orderRepository.getAllOrdersFromToday();
+    }
+
+    public Order getOrderByOrderId(int id) {
+        return orderRepository.getOrderByOrderId(id).orElseThrow(() -> new NullPointerException("No such order found"));
     }
 
 

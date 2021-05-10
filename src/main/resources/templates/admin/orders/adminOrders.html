@@ -22,7 +22,8 @@
 
     <form align="center" id="orderForm" method="get" name="orderForm" th:action="@{/admin/orders/today}">
         <tr th:each="order: ${orders}">
-            <td><span th:text="${order.getOrderId()}"> Order ID: </span></td>
+            <td><a th:href="@{/admin/orders/detail/{id}(id=${order.getOrderId()})}"><span
+                    th:text="${order.getOrderId()}"> Order ID: </span></a></td>
             <td><span th:text="${order.getOrder_time()}"> Order datum: </span></td>
             <td><span th:text="${order.getOrderTotal()}"> Order datum: </span></td>
             <td><span th:text="${order.getEmployee().getUsername()}"> Aangemaakt order: </span></td>

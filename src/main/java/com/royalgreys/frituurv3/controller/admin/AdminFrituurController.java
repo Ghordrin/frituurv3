@@ -256,6 +256,13 @@ public class AdminFrituurController {
         return "admin/orders/adminOrders";
     }
 
+    @GetMapping("/admin/orders/detail/{id}")
+    public String returnOrderDetail(@PathVariable("id") int id, Model model) {
+        model.addAttribute("order", orderService.getOrderByOrderId(id));
+        return "admin/orders/adminOrderDetail";
+
+    }
+
     //attributes
     @ModelAttribute(value = "newSnack")
     public Product newSnack() {

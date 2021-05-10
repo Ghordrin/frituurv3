@@ -19,12 +19,12 @@
 <div th:include="header :: header"></div>
 <body>
 <div class="container">
-    <div class="d-flex justify-content-center">
-        <h1 class="display-4" th:text="'Vandaag: ' + ${currentDay}"></h1>
-        <p th:text="'Order totaal in euro: €' + ${orderTotal}"></p>
-        <p th:text="'Aantal orders vandaag: ' + ${totalOrdersToday}"></p>
-        <p th:text="'Hoogste order totaal in euro: € ' + ${highestOrderTotal}"></p>
-    </div>
+<div class="d-flex flex-column justify-content-center">
+    <h1 class="display-4" th:text="'Vandaag: ' + ${currentDay}"></h1>
+    <p th:text="'Order totaal in euro: €' + ${orderTotal}"></p>
+    <p th:text="'Aantal orders vandaag: ' + ${totalOrdersToday}"></p>
+    <p th:text="'Hoogste order totaal in euro: € ' + ${highestOrderTotal}"></p>
+</div>
 </div>
 </body>
 <footer>
